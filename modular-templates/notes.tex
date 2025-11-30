@@ -1,0 +1,127 @@
+\documentclass[a4paper,12pt,twoside,openright]{article}
+
+%% ============================================================================
+%% LOAD COMMON SAGAR PACKAGES
+%% ============================================================================
+\usepackage{sagar-math}           % math & physics notation
+\usepackage{sagar-graphics-tikz}  % TikZ, pgfplots, tables, graphics
+\usepackage{sagar-boxes}          % theorem, example, note, important, keypoint, etc.
+\usepackage{sagar-article-core}   % fonts, spacing, geometry, microtype, utilities
+
+%% ============================================================================
+%% PER-DOCUMENT LIST STYLE (OPTIONAL)
+%% ============================================================================
+\setlist[enumerate]{label=(\alph*)}
+\setlist[itemize]{label=\textbullet}
+
+%% ============================================================================
+%% HEADER & FOOTER (changes from document to document)
+%% ============================================================================
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header
+\fancyhead[LE]{\sffamily\bfseries\color{primaryblue}\leftmark}
+\fancyhead[RO]{\sffamily\bfseries\color{primaryblue}\rightmark}
+\fancyhead[LO,RE]{\sffamily\small The Cathedral \& John Connon School}
+
+% Footer
+\fancyfoot[LE,RO]{\sffamily\bfseries Page \thepage\ of \pageref{LastPage}}
+\fancyfoot[LO,RE]{\sffamily\small Physics \& Mathematics Department}
+
+% Thin blue rule under header
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
+
+%% ============================================================================
+%% SECTION HEADING STYLING
+%% ============================================================================
+\usepackage{sectsty}
+\sectionfont{\sffamily\Large\bfseries\color{primaryblue}}
+\subsectionfont{\sffamily\large\bfseries\color{secondarygreen!80!black}}
+\subsubsectionfont{\sffamily\normalsize\bfseries\color{gray!70!black}}
+
+%% ============================================================================
+%% OPTIONAL WATERMARK FOR STUDY NOTES
+%% ============================================================================
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.45}
+\SetWatermarkLightness{0.92}
+\SetWatermarkAngle{45}
+
+%% ============================================================================
+%% GRAPHICSPATH — CAN CHANGE FROM COMPUTER TO COMPUTER
+%% ============================================================================
+\graphicspath{{D:/Latex/images/}}
+% \graphicspath{{I:/My Drive/Latex/Images/}}
+% \graphicspath{{G:/Other computers/My Computer (1)/latex/images/}}
+% \graphicspath{{/media/sagar/.../latex/images/}}
+% \graphicspath{{./Images/}}
+
+%% ============================================================================
+%% METADATA & HYPERREF — EDIT PER NOTE UNIT
+%% ============================================================================
+\title{Physics \& Mathematics Notes}
+\author{Sagar Tamhankar}
+\date{\today}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor   = {Sagar Tamhankar},
+    pdftitle    = {Physics \& Mathematics Educational Notes},
+    colorlinks  = true,
+    linkcolor   = primaryblue,
+    citecolor   = secondarygreen,
+    urlcolor    = primaryblue,
+    filecolor   = accentorange,
+    pdfstartview = FitH
+}
+%% ============================================================================
+%% If Cases
+%% ============================================================================
+\newif \ifteacher
+%\teachertrue      % Teacher version"
+ \teacherfalse   % Student version",
+ \newif \ifhint
+%\hinttrue      % Version with hint"
+ \hintfalse   % Version without hint",
+ \newif \ifanswer
+%\answertrue      % Version with answer"
+ \answerfalse   % Version without answer",
+%% ============================================================================
+%% DOCUMENT BEGIN
+%% ============================================================================
+\begin{document}
+
+% \maketitle
+% \thispagestyle{empty}
+% \newpage
+
+\section{Introduction}
+
+\begin{definition}{Logarithm}
+A logarithm answers the question:
+\emph{“To what power must the base be raised to obtain a given number?”}
+\end{definition}
+
+\begin{keypoint}
+The base of the logarithm determines the exponential scale.
+\end{keypoint}
+
+\begin{example}{Evaluating Logarithms}
+Find the value of $\log_2 16$.
+\end{example}
+
+\begin{formula}{Slope of a Line}
+\( m = \dfrac{y_2 - y_1}{\,x_2 - x_1\,} \)
+\end{formula}
+
+\begin{important}
+Always simplify the logarithmic base before evaluating.
+\end{important}
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[a4paper,addpoints,12pt]{exam}
+
+% -----------------------------------------------------------------
+% Common Sagar style packages
+% -----------------------------------------------------------------
+\usepackage[utf8]{inputenc}        % source encoding (optional but handy)
+\usepackage{sagar-math}           % amsmath, physics, siunitx, rupee, etc.
+\usepackage{sagar-graphics-tikz}  % graphics, tables, TikZ, pgfplots, circuitikz
+\usepackage{sagar-boxes}          % boxes (definition, example, etc.) if needed
+\usepackage{sagar-exam-core}      % exam geometry, colors, tcolorboxes, question style
+
+% -----------------------------------------------------------------
+% Document metadata & hyperref (for PDF info)
+% -----------------------------------------------------------------
+\def\docauthor{Sagar Tamhankar}
+\def\doctitle{Class Test Question Paper}
+\def\docsubject{Mathematics}
+\def\dockeywords{LaTeX, Mathematics, ISC}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor   = {\docauthor},
+    pdftitle    = {\doctitle},
+    pdfsubject  = {\docsubject},
+    pdfkeywords = {\dockeywords},
+    colorlinks  = true,
+    linkcolor   = primaryblue,
+    urlcolor    = primaryblue,
+    citecolor   = primaryblue,
+    bookmarks   = true,
+    bookmarksopen      = true,
+    bookmarksopenlevel = 2,
+    pdfstartview       = FitH,
+    linktoc            = all
+}
+
+% -----------------------------------------------------------------
+% Watermark for this test
+% -----------------------------------------------------------------
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.5}
+\SetWatermarkLightness{0.92}
+\SetWatermarkAngle{45}
+
+%% ============================================================================
+%% GRAPHICS PATH (per-machine / per-project)
+%% ============================================================================
+% Choose the one that matches your current setup:
+% \graphicspath{{I:/My Drive/Latex/Images/}} % Windows (Drive)
+\graphicspath{{D:/Latex/images/}}            % Windows (local)
+% \graphicspath{{G:/Other computers/My Computer (1)/latex/images/}} % Laptop
+% \graphicspath{{/media/sagar/0E605F52605F401F/latex/images/}}      % Linux
+% \graphicspath{{./Images/}}                                   % Relative
+
+% -----------------------------------------------------------------
+% Global spacing tweaks (optional; per your original test)
+% -----------------------------------------------------------------
+\linespread{1.15}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+\flushbottom
+
+% =============================== Start of Document ===========================
+\begin{document}
+
+% Header and Footer Details (exam class header/footer, not fancyhdr)
+\lhead{}
+\chead{}
+\rhead{ISC Mathematics}
+\lfoot{Mathematics Dept.}
+\cfoot{Page \thepage\ of \numpages}
+\rfoot{}
+
+\noindent
+\begin{center}
+%   \includegraphics[width=0.6\textwidth]{cajcs.JPG}   \\
+%   \large{\textbf{Test Topic}}  \\
+\end{center}
+\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \hspace{1cm} \\
+\textbf{Std: 12 ISC} \hfill \textbf{Time: 3 hrs} \hspace{1cm} \\
+\textbf{Date: 05-09-2025} \\
+\textbf{\textit{ Reading time : 15 minutes}}
+
+\hrulefill
+
+\begin{questions}
+  \onehalfspacing
+  \pointsdroppedatright
+  \marksnotpoints
+  %\marginpointname{ \points}
+  \setlength{\rightpointsmargin}{2.1cm}
+  \pointformat{\bfseries\boldmath[\themarginpoints]}
+
+  % Question 1
+  \question[15] In sub-parts (i) to (x) choose the correct option and in sub-parts (xi) to (xv) answer the questions as instructed. \droppoints
+  \begin{parts}
+    \renewcommand{\thepartno}{\roman{partno}}
+    % MCQ 1
+    \part
+
+    \begin{oneparchoices}
+      \choice
+      \choice
+      \choice
+      \choice
+    \end{oneparchoices}
+  \end{parts}
+\end{questions}
+
+\centering
+\vspace{2cm}
+********
+
+\end{document}

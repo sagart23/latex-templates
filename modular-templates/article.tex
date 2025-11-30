@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt,twoside]{article} % twoside for professional appearance
+
+%% ============================================================================
+%% COMMON STYLE PACKAGES (your .sty files)
+%% ============================================================================
+\usepackage{sagar-math}           % math, physics, siunitx, rupee
+\usepackage{sagar-graphics-tikz}  % graphics, tables, TikZ, pgfplots
+\usepackage{sagar-boxes}          % definition/theorem/example/note/etc. boxes
+\usepackage{sagar-article-core}   % fonts, microtype, spacing, geometry, utilities
+
+%% ============================================================================
+%% PER-DOCUMENT CUSTOMISATIONS
+%% (things you may change from article to article)
+%% ============================================================================
+
+% Lists and enumeration style
+\setlist[enumerate]{label=(\alph*)}  % Professional enumeration style
+\setlist[itemize]{label=\textbullet}
+
+%% ============================================================================
+%% ENHANCED HEADER & FOOTER (specific to these notes)
+%% ============================================================================
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all
+
+% Enhanced header design
+\fancyhead[LE]{\sffamily\bfseries\color{primaryblue}\leftmark}
+\fancyhead[RO]{\sffamily\bfseries\color{primaryblue}\rightmark}
+\fancyhead[LO,RE]{\sffamily\small The Cathedral \& John Connon School}
+
+% Enhanced footer design
+\fancyfoot[LE,RO]{\sffamily\bfseries Page \thepage\ of \pageref{LastPage}}
+\fancyfoot[LO,RE]{\sffamily\small Physics \& Mathematics Department}
+
+% Custom rule under header
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{%
+    \color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
+
+%% ============================================================================
+%% SECTION STYLING - ENHANCED
+%% ============================================================================
+\usepackage{sectsty}
+\sectionfont{\sffamily\Large\bfseries\color{primaryblue}}
+\subsectionfont{\sffamily\large\bfseries\color{secondarygreen!80!black}}
+\subsubsectionfont{\sffamily\normalsize\bfseries\color{gray!70!black}}
+
+%% ============================================================================
+%% ENHANCED WATERMARK (this can vary per document)
+%% ============================================================================
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.4}
+\SetWatermarkLightness{0.9}
+\SetWatermarkAngle{45}
+
+%% ============================================================================
+%% GRAPHICS PATH (per-machine / per-project)
+%% ============================================================================
+% Choose the one that matches your current setup:
+% \graphicspath{{I:/My Drive/Latex/Images/}} % Windows (Drive)
+\graphicspath{{D:/Latex/images/}}            % Windows (local)
+% \graphicspath{{G:/Other computers/My Computer (1)/latex/images/}} % Laptop
+% \graphicspath{{/media/sagar/0E605F52605F401F/latex/images/}}      % Linux
+% \graphicspath{{./Images/}}                                   % Relative
+
+%% ============================================================================
+%% DOCUMENT METADATA & HYPERREF
+%% ============================================================================
+\title{Physics \& Mathematics Notes}
+\author{Sagar Tamhankar}
+\date{\today}
+
+\usepackage{hyperref}
+\hypersetup{
+  pdfauthor   = {Sagar Tamhankar},
+  pdftitle    = {Physics \& Mathematics Educational Material},
+  pdfsubject  = {Physics and Mathematics Education},
+  pdfkeywords = {LaTeX, Physics, Mathematics, Education, ICSE, ISC},
+  colorlinks  = true,
+  linkcolor   = primaryblue,
+  citecolor   = secondarygreen,
+  urlcolor    = primaryblue,
+  filecolor   = accentorange,
+  bookmarks   = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 2,
+  pdfstartview       = FitH,
+  linktoc            = all,
+  pdfcreator         = {LaTeX with Sagar's article template}
+}
+%% ============================================================================
+%% If Cases
+%% ============================================================================
+\newif \ifteacher
+%\teachertrue      % Teacher version"
+ \teacherfalse   % Student version",
+ \newif \ifhint
+%\hinttrue      % Version with hint"
+ \hintfalse   % Version without hint",
+ \newif \ifanswer
+%\answertrue      % Version with answer"
+ \answerfalse   % Version without answer",
+%% ============================================================================
+%% DOCUMENT BEGIN - ARTICLE TEMPLATE
+%% ============================================================================
+\begin{document}
+
+\maketitle
+
+\begin{definition}{Sample}
+This is a sample \emphblue{definition box} using \texttt{sagar-boxes.sty}.
+\end{definition}
+
+\section{Introduction}
+Start writing your notes here…
+
+\end{document}
