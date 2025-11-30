@@ -58,6 +58,7 @@ If you’d like to:
 - Add new layouts
 - Fix bugs in .sty files
 - Suggest enhancements
+
 🙌 Acknowledgements
 
 Created and maintained by Sagar Tamhankar
