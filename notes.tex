@@ -1,374 +1,205 @@
-%% ============================================================================
-%% TEMPLATE 1: ENHANCED STUDY NOTES VERSION
-%% ============================================================================
-% !TeX document class: article
-% !TeX spellcheck: en_US
-% !TeX encoding: UTF-8
-%
-% File: Enhanced_Article_Template.tex
-% Description: Professional article template for physics and mathematics notes
-% Keywords: physics, mathematics, education, professional, typography
-% Date: September 2025
-% Author: Sagar Tamhankar
 \documentclass[a4paper,12pt,twoside,openright]{article}
 
-%% ============================================================================
-%% CORE ENCODING & FONT SETUP
-%% ============================================================================
-\usepackage[T1]{fontenc}
+%   ============================================================================
+%   COMMON STYLE PACKAGES (correct loading order)
+%   ============================================================================
+\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
+\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
+\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
+\usepackage{sagar-article-core}            % Article geometry & formatting
 
-% Enhanced font selection - choose one:
-% Option 1: Latin Modern (default, good compatibility)
-\usepackage{lmodern}
-% Option 2: Times-like professional fonts (uncomment if preferred)
-% \usepackage{newtxtext,newtxmath}
-% Option 3: Palatino-like fonts (uncomment if preferred)
-% \usepackage{newpxtext,newpxmath}
-
-%% ============================================================================
-%% ENHANCED TYPOGRAPHY & SPACING
-%% ============================================================================
-\usepackage[final,babel=true]{microtype}
-\microtypesetup{
-    protrusion=true, 
-    expansion=true, 
-    tracking=true,
-    kerning=true,
-    spacing=true
-}
-\UseMicrotypeSet[protrusion]{basicmath}
-% Add these specific packages for study notes:
- 
-\usepackage{setspace}
-\setstretch{1.2}              % More readable than \linespread{1.15}
-\setlength{\parskip}{0.6em}
-\setlength{\parindent}{0pt}
-\raggedbottom                 % More flexible than \flushbottom for articles
-
-%% ============================================================================
-%% PAGE LAYOUT & GEOMETRY
-%% ============================================================================
-\usepackage[
-    left=2.5cm, right=2.5cm, 
-    top=3cm, bottom=3cm,
-    headheight=15pt,
-    headsep=1cm,
-    footskip=1cm,
-    marginparwidth=2cm,
-    marginparsep=0.5cm
-]{geometry}
-
-%% ============================================================================
-%% ESSENTIAL PACKAGES (Organized by Category)
-%% ============================================================================
-
-% Math packages
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{mathtools}        % Enhanced math environments
-\usepackage{physics}          % Physics notation
-\usepackage{siunitx}          % SI units formatting
-\DeclareMathOperator\cosec{cosec}
-
-% Graphics and visualization
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{caption,subcaption}
-\usepackage{wrapfig}
-\usepackage{multicol}
-
-% Tables
-\usepackage{booktabs}
-\usepackage{tabularx,longtable}
-\usepackage{tabularray}       % Modern table package
-
-% Lists and enumeration
+%   ============================================================================
+%   LIST CUSTOMIZATION (optional)
+%   ============================================================================
 \usepackage{enumitem}
-\setlist[enumerate]{label=(\alph*)}  % Professional enumeration style
+\setlist[enumerate]{label=(\alph*)}
 \setlist[itemize]{label=\textbullet}
 
-% Colors and highlighting
-\usepackage[table]{xcolor}
-\definecolor{primaryblue}{RGB}{0,102,153}
-\definecolor{secondarygreen}{RGB}{51,153,102}
-\definecolor{accentorange}{RGB}{255,153,51}
-\definecolor{warningred}{RGB}{204,51,51}
-\definecolor{backgroundgray}{RGB}{248,249,250}
+%   ============================================================================
+%   WATERMARK (after geometry is set)
+%   ============================================================================
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.45}
+\SetWatermarkLightness{0.92}
+\SetWatermarkAngle{45}
 
-% TikZ and plotting
-\usepackage{tikz}
-\usepackage{tkz-euclide}
-\usepackage{pgfplots,pgfplotstable}
-\usepackage[americanvoltages,fulldiodes,siunitx]{circuitikz}
+%   ============================================================================
+%   GRAPHICS PATH
+%   ============================================================================
+\graphicspath{{./Images/}}
 
-\usetikzlibrary{
-    patterns, arrows.meta, calc, arrows, 
-    shadows.blur, math, angles, shapes.geometric,
-    positioning, decorations.pathmorphing,
-    backgrounds, fit
-}
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{statistics,fillbetween}
-\tikzset{>=Stealth}  % Modern arrow style
-
-%% ============================================================================
-%% ENHANCED TCOLORBOX ENVIRONMENTS
-%% ============================================================================
-\usepackage[most,breakable]{tcolorbox}
-\tcbuselibrary{skins,raster,theorems}
-
-% Study-specific environments
- \newtcolorbox{keypoint}[1][]{
-     enhanced,
-     colback=accentorange!15,
-     colframe=accentorange!80!black,
-     leftrule=5mm,
-     rightrule=0pt,
-     toprule=0pt,
-     bottomrule=0pt,
-     sharp corners,
-     breakable,
-     #1
- }
-
- \newtcolorbox{formula}[2][]{
-     enhanced,
-     colback=primaryblue!5,
-     colframe=primaryblue!80!black,
-     title={\textbf{Formula: #2}},
-     fonttitle=\sffamily\bfseries,
-     center title,
-     sharp corners,
-     breakable,
-     #1
- }
-
-% Definition Box - Enhanced Professional Style
-\newtcolorbox{definition}[2][]{
-    enhanced,
-    colback=primaryblue!5,
-    colframe=primaryblue!80!black,
-    colbacktitle=primaryblue!80!black,
-    coltitle=white,
-    title={\textbf{Definition: #2}},
-    fonttitle=\sffamily\bfseries,
-    attach boxed title to top left={
-        xshift=0.5cm,
-        yshift=-3mm,
-        yshifttext=-1mm
-    },
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=primaryblue!80!black,
-        sharp corners
-    },
-    sharp corners,
-    drop shadow={black!20!white},
-    breakable,
-    #1
-}
-
-% Theorem Box
-\newtcolorbox{theorem}[2][]{
-    enhanced,
-    colback=secondarygreen!5,
-    colframe=secondarygreen!80!black,
-    colbacktitle=secondarygreen!80!black,
-    coltitle=white,
-    title={\textbf{Theorem: #2}},
-    fonttitle=\sffamily\bfseries,
-    attach boxed title to top left={
-        xshift=0.5cm,
-        yshift=-3mm,
-        yshifttext=-1mm
-    },
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=secondarygreen!80!black,
-        sharp corners
-    },
-    sharp corners,
-    drop shadow={black!20!white},
-    breakable,
-    #1
-}
-
-% Note Box - Enhanced
-\newtcolorbox{noteBox}[1][]{
-    enhanced,
-    colback=accentorange!10,
-    colframe=accentorange!80!black,
-    colbacktitle=accentorange!80!black,
-    coltitle=white,
-    title={\textbf{Note}},
-    fonttitle=\sffamily\bfseries,
-    attach boxed title to top left={
-        xshift=0.5cm,
-        yshift=-3mm,
-        yshifttext=-1mm
-    },
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=accentorange!80!black,
-        sharp corners
-    },
-    sharp corners,
-    drop shadow={black!20!white},
-    breakable,
-    #1
-}
-
-% Example Box
-\newtcolorbox{example}[2][]{
-    enhanced,
-    colback=backgroundgray,
-    colframe=gray!60!black,
-    colbacktitle=gray!60!black,
-    coltitle=white,
-    title={\textbf{Example: #2}},
-    fonttitle=\sffamily\bfseries,
-    attach boxed title to top left={
-        xshift=0.5cm,
-        yshift=-3mm,
-        yshifttext=-1mm
-    },
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=gray!60!black,
-        sharp corners
-    },
-    sharp corners,
-    breakable,
-    #1
-}
-
-% Warning/Important Box
-\newtcolorbox{important}[1][]{
-    enhanced,
-    colback=warningred!10,
-    colframe=warningred!80!black,
-    colbacktitle=warningred!80!black,
-    coltitle=white,
-    title={\textbf{Important}},
-    fonttitle=\sffamily\bfseries,
-    attach boxed title to top left={
-        xshift=0.5cm,
-        yshift=-3mm,
-        yshifttext=-1mm
-    },
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=warningred!80!black,
-        sharp corners
-    },
-    sharp corners,
-    drop shadow={black!20!white},
-    breakable,
-    #1
-}
-
-%% ============================================================================
-%% ENHANCED INLINE COMMANDS
-%% ============================================================================
-\newcommand{\highlight}[1]{\textcolor{primaryblue}{\textbf{#1}}}
-\newcommand{\emphred}[1]{\textcolor{warningred!80!black}{\textbf{#1}}}
-\newcommand{\emphblue}[1]{\textcolor{primaryblue!80!black}{\textbf{#1}}}
-\newcommand{\emphgreen}[1]{\textcolor{secondarygreen!80!black}{\textbf{#1}}}
-
-%% ============================================================================
-%% ENHANCED HEADER & FOOTER
-%% ============================================================================
+%   ============================================================================
+%   HEADERS & FOOTERS
+%   ============================================================================
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 
 \pagestyle{fancy}
-\fancyhf{} % Clear all
+\fancyhf{}
 
-% Enhanced header design
+% Header
 \fancyhead[LE]{\sffamily\bfseries\color{primaryblue}\leftmark}
 \fancyhead[RO]{\sffamily\bfseries\color{primaryblue}\rightmark}
 \fancyhead[LO,RE]{\sffamily\small The Cathedral \& John Connon School}
 
-% Enhanced footer design
+% Footer
 \fancyfoot[LE,RO]{\sffamily\bfseries Page \thepage\ of \pageref{LastPage}}
 \fancyfoot[LO,RE]{\sffamily\small Physics \& Mathematics Department}
 
-% Custom rule under header
+% Thin blue rule under header
 \renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\headrule}{\hbox to\headwidth{\color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{%
+    \color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
 
-%% ============================================================================
-%% SECTION STYLING - ENHANCED
-%% ============================================================================
+%   ============================================================================
+%   SECTION STYLING
+%   ============================================================================
 \usepackage{sectsty}
 \sectionfont{\sffamily\Large\bfseries\color{primaryblue}}
 \subsectionfont{\sffamily\large\bfseries\color{secondarygreen!80!black}}
 \subsubsectionfont{\sffamily\normalsize\bfseries\color{gray!70!black}}
 
-%% ============================================================================
-%% ENHANCED WATERMARK
-%% ============================================================================
-\usepackage[firstpageonly]{draftwatermark}
-\SetWatermarkText{CAJCS Senior Section}
-\SetWatermarkScale{0.4}
-\SetWatermarkLightness{0.9}
-\SetWatermarkAngle{45}
-
-%% ============================================================================
-%% GRAPHICS PATH
-%% ============================================================================
-%\graphicspath{{I:/My Drive/Latex/Images/}} % Windows
-\graphicspath{{D:/Latex/images/}}          % Windows
-%\graphicspath{{G:/Other computers/My Computer (1)/latex/images/}} % Laptop
-%\graphicspath{{/media/sagar/0E605F52605F401F/latex/images/}} % Linux
-%\graphicspath{{./Images/}} % Adjust path for your images if different from book's
-
-%% ============================================================================
-%% DOCUMENT METADATA & HYPERREF
-%% ============================================================================
+%   ============================================================================
+%   DOCUMENT METADATA
+%   ============================================================================
 \title{Physics \& Mathematics Notes}
 \author{Sagar Tamhankar}
 \date{\today}
 
+%   ============================================================================
+%   HYPERREF (always last)
+%   ============================================================================
 \usepackage{hyperref}
 \hypersetup{
-    pdfauthor={Sagar Tamhankar},
-    pdftitle={Physics \& Mathematics Educational Material},
-    pdfsubject={Physics and Mathematics Education},
-    pdfkeywords={LaTeX, Physics, Mathematics, Education, ICSE, ISC},
-    colorlinks=true,
-    linkcolor=primaryblue,
-    citecolor=secondarygreen,
-    urlcolor=primaryblue,
-    filecolor=accentorange,
-    bookmarks=true,
-    bookmarksopen=true,
-    bookmarksopenlevel=2,
-    pdfstartview=FitH,
-    linktoc=all,
-    pdfcreator={LaTeX with Enhanced Template}
+    pdfauthor   = {Sagar Tamhankar},
+    pdftitle    = {Physics \& Mathematics Educational Notes},
+    colorlinks  = true,
+    linkcolor   = primaryblue,
+    citecolor   = secondarygreen,
+    urlcolor    = primaryblue,
+    filecolor   = accentorange,
+    pdfstartview = FitH
 }
 
-% Additional utility packages
-\usepackage{todonotes}
-\usepackage{tfrupee}
-\usepackage{qrcode}
-\usepackage{comment}
+%   ============================================================================
+%   CONDITIONAL COMPILATION FLAGS
+%   ============================================================================
+\newif\ifteacher
+\teacherfalse   % Change to \teachertrue for teacher version
 
-%% ============================================================================
-%% DOCUMENT BEGIN - NOTES TEMPLATE
-%% ============================================================================
+\newif\ifhint
+\hintfalse      % Change to \hinttrue to show hints
+
+\newif\ifanswer
+\answerfalse    % Change to \answertrue to show answers
+
+%   ============================================================================
+%   DOCUMENT BEGIN
+%   ============================================================================
 \begin{document}
 
-% Uncomment for title page
+% Uncomment if you want a title page
 % \maketitle
 % \thispagestyle{empty}
 % \newpage
 
-% Your content goes here
+%   ============================================================================
+%   CONTENT
+%   ============================================================================
+
+\section{Introduction to Logarithms}
+
+\begin{definition}{Logarithm}
+A logarithm answers the question:
+\emph{"To what power must the base be raised to obtain a given number?"}
+
+Formally, if $b^x = y$, then $\log_b y = x$.
+\end{definition}
+
+\begin{noteBox}
+The base of the logarithm determines the exponential scale. Common bases include:
+\begin{itemize}
+  \item Base 10 (common logarithm): $\log_{10} x$ or simply $\log x$
+  \item Base $e$ (natural logarithm): $\log_e x$ or $\ln x$
+  \item Base 2 (binary logarithm): $\log_2 x$
+\end{itemize}
+\end{noteBox}
+
+\subsection{Laws of Logarithms}
+
+\begin{theorem}{Product Law}
+For positive numbers $a$ and $b$:
+\[ \log_c(ab) = \log_c a + \log_c b \]
+\end{theorem}
+
+\begin{theorem}{Quotient Law}
+For positive numbers $a$ and $b$:
+\[ \log_c\left(\frac{a}{b}\right) = \log_c a - \log_c b \]
+\end{theorem}
+
+\begin{theorem}{Power Law}
+For positive number $a$ and real number $n$:
+\[ \log_c(a^n) = n \cdot \log_c a \]
+\end{theorem}
+
+\subsection{Worked Examples}
+
+\begin{example}{Evaluating Logarithms}
+Find the value of $\log_2 16$.
+
+\begin{Mysolutionbox}
+We need to find $x$ such that $2^x = 16$.
+
+Since $2^4 = 16$, we have $\log_2 16 = 4$.
+\end{Mysolutionbox}
+\end{example}
+
+\begin{example}{Using Logarithm Laws}
+Simplify: $\log_3 27 + \log_3 9 - \log_3 81$
+
+\begin{Mysolutionbox}
+\begin{align*}
+\log_3 27 + \log_3 9 - \log_3 81 &= \log_3(3^3) + \log_3(3^2) - \log_3(3^4) \\
+&= 3 + 2 - 4 \\
+&= 1
+\end{align*}
+
+Alternatively, using logarithm laws:
+\begin{align*}
+\log_3 27 + \log_3 9 - \log_3 81 &= \log_3\left(\frac{27 \times 9}{81}\right) \\
+&= \log_3 3 \\
+&= 1
+\end{align*}
+\end{Mysolutionbox}
+\end{example}
+
+\begin{important}
+Always check that the argument of a logarithm is positive. The expression $\log_b x$ is only defined for $x > 0$ and $b > 0$, $b \neq 1$.
+\end{important}
+
+\begin{errorbox}
+\textbf{Common Mistake:} Students often write $\log(a + b) = \log a + \log b$.
+
+This is \emphred{INCORRECT}! The correct law is:
+\[ \log(ab) = \log a + \log b \quad \text{(Product Law)} \]
+
+There is no simplification for $\log(a + b)$.
+\end{errorbox}
+
+\section{Applications}
+
+Logarithms appear in many real-world contexts:
+\begin{itemize}
+  \item \emphblue{pH Scale} in chemistry: $\text{pH} = -\log_{10}[\text{H}^+]$
+  \item \emphblue{Richter Scale} for earthquakes
+  \item \emphblue{Decibel Scale} for sound intensity
+  \item \emphblue{Compound Interest} calculations
+\end{itemize}
+
+\begin{teachingtip}
+When teaching logarithms, always connect back to exponentials. Students understand $2^3 = 8$ intuitively, so build on that to explain $\log_2 8 = 3$ as the inverse operation.
+\end{teachingtip}
 
 \end{document}
