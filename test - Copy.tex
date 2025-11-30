@@ -1,0 +1,212 @@
+% !TeX document class: article
+% !TeX spellcheck: en_US
+%
+% File: 11M_Functions_Notes_20250819.tex
+% Description: Notes on the properties of various types of functions, including polynomial and exponential.
+% Keywords: math, functions, algebra, polynomial, exponential
+% Date: August 19, 2025
+% Author: [Your Name]
+\documentclass[a4paper, addpoints, 12pt]{exam}
+
+% ----- Encoding and Font Setup (for pdfLaTeX) -----
+% Use T1 font encoding for better hyphenation and support for various characters.
+\usepackage[T1]{fontenc}
+% Input encoding for your source files (most modern editors use UTF-8).
+\usepackage[utf8]{inputenc}
+% Latin Modern is a polished version of Computer Modern and is good for pdfLaTeX.
+\usepackage{lmodern}
+
+% ----- Microtype for Enhanced Typography -----
+% microtype provides sophisticated font expansion, protrusion, and tracking.
+% [final] ensures it's always active, even in draft mode.
+\usepackage[final]{microtype}
+\microtypesetup{protrusion=true, expansion=true, tracking=true}
+% Apply microtype settings specifically to math for better spacing.
+\UseMicrotypeSet[protrusion]{basicmath}
+
+% ----- Page Geometry -----
+% Using slightly more generous margins for better readability and print safety
+% while still being space-efficient for question papers.
+% 2cm all around is a good balance for question papers.
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+
+%================================
+% Document Metadata (Consolidated)
+% Using \def instead of \newcommand for redefinability if needed
+%================================
+\def\docauthor{Sagar Tamhankar}
+\def\doctitle{Class Test Question Paper}
+\def\docsubject{Mathematics}
+\def\dockeywords{LaTeX, Mathematics, ICSE}
+
+\title{\doctitle}
+\author{\docauthor}
+\date{\today}
+
+%================================
+% Core Packages (Consolidated & Cleaned)
+%================================
+% amsmath is essential for advanced math typesetting. fleqn for left-aligned equations.
+\usepackage[fleqn]{amsmath}
+% amsfonts (for Blackboard Bold, etc.) and amssymb (for more math symbols).
+\usepackage{amsfonts, amssymb}
+% Comprehensive package for including graphics.
+\usepackage{graphicx}
+% For multi-column layouts (useful for worksheets/quizzes).
+\usepackage{multicol}
+% For wrapping text around figures.
+\usepackage{wrapfig}
+% For flexible table columns, extended tables, and variable width content.
+\usepackage{tabularx, longtable, varwidth}
+% For professional-looking horizontal rules in tables.
+\usepackage{booktabs}
+% Improved floating environments for figures/tables.
+\usepackage{float}
+% For advanced captioning and sub-captions.
+\usepackage{caption, subcaption}
+% For customizable list environments (enumerate, itemize).
+\usepackage{enumitem}
+% For adding temporary notes/reminders.
+\usepackage{todonotes}
+% Comprehensive physics macros and environments (e.g., \qty, \vec, \abs).
+\usepackage{physics}
+% For generating QR codes.
+\usepackage{qrcode}
+% For commenting out blocks of text/code.
+\usepackage{comment}
+% For adjusting line spacing (used later with \doublespacing or \setstretch).
+\usepackage{setspace}
+% For colors, using xcolor for advanced color models.
+\usepackage{xcolor} % xcolor is generally preferred over color
+% For the Indian Rupee symbol.
+\usepackage{tfrupee} % Placed with other general utility packages
+
+%================================
+% Fancy Environments: Boxes & Colors (tcolorbox)
+%================================
+% Comprehensive box package. 'most' loads many libraries, 'breakable' allows boxes to span pages.
+\usepackage[most, many, breakable]{tcolorbox}
+\tcbuselibrary{skins}
+
+
+%================================
+% TikZ & PGFPlots
+%================================
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage[americanvoltages,fulldiodes,siunitx]{circuitikz}
+\usetikzlibrary{patterns, arrows.meta, calc, arrows, shadows.blur, math, angles, shapes.geometric}
+% Setting compat to 1.18 for consistency with other preambles.
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{statistics, fillbetween}
+\tikzset{>=latex} % Set default arrow style for TikZ
+
+%================================
+% Custom Math Operators
+%================================
+\DeclareMathOperator\cosec{cosec}
+
+%================================
+% Exam Class Specific Customizations
+%================================
+\renewcommand{\questionlabel}{\textbf{Question \thequestion.}}
+\renewcommand{\partlabel}{\textbf{(\thepartno)}}
+\renewcommand{\subpartlabel}{\textbf{\thesubpart.}}
+
+
+%================================
+% Watermark
+%================================
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.5}
+
+
+%================================
+% PDF Metadata & Hyperref Settings
+%================================
+\usepackage{hyperref} % Moved up with other core packages for consistency
+\hypersetup{
+    pdfauthor={\docauthor},
+    pdftitle={\doctitle},
+    pdfsubject={\docsubject},
+    pdfkeywords={\dockeywords},
+    colorlinks=true,
+    linkcolor=blue,    % Keep links blue for question papers
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarks=true,         % Enable bookmarks
+    bookmarksopen=true,     % Bookmarks panel open by default
+    bookmarksopenlevel=2,   % Open bookmarks to level 2 (sections)
+    pdfstartview=FitH,      % Fit page to window width on opening
+    % hidelinks, % Uncomment this if you want links but no visible boxes/colors
+    linktoc=all             % Make link to entire section clickable (not just number)
+}
+
+%================================
+% Graphics Path
+%================================
+% Consolidate to one active path.
+\graphicspath{{./Images/}} % Prefer relative path first, then absolute if needed.
+% \graphicspath{{I:/My Drive/Latex/Images/}} % Windows
+% \graphicspath{{D:/Latex/images/}} % Windows
+% \graphicspath{{G:/Other computers/My Computer (1)/latex/images/}} % Laptop
+% \graphicspath{{/media/sagar/0E605F52605F401F/latex/images/}} % Linux
+
+% ----------- Readability & Layout Enhancements ------------
+\linespread{1.15}            % Improves overall line spacing for general text
+\setlength{\parskip}{0.5em}    % Adds space between paragraphs
+\setlength{\parindent}{0pt}    % No paragraph indentation
+\flushbottom                  % Equalizes page height on two-page spreads
+
+% =============================== Start of Document ===========================
+\begin{document}
+% Header and Footer Details
+\lhead{}
+\chead{}
+\rhead{ISC Mathematics}
+\lfoot{Mathematics Dept.}
+\cfoot{Page \thepage\ of \numpages}
+\rfoot{}
+
+\noindent
+\begin{center}
+%	\includegraphics[width=0.6\textwidth]{cajcs.JPG}   \\\
+%	\large{\textbf{Test Topic}}  \\\
+\end{center}
+\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \hspace{1cm} \\\
+\textbf{Std: 12 ISC} \hfill \textbf{Time: 3 hrs} \hspace{1cm} \\\
+\textbf{Date: 05-09-2025} \\\
+\textbf{\textit{ Reading time : 15 minutes}}
+
+\hrulefill
+
+\begin{questions}
+	\onehalfspacing
+	\pointsdroppedatright
+	\marksnotpoints
+	%\marginpointname{ \points}
+	\setlength{\rightpointsmargin}{2.1cm}
+	\pointformat{\bfseries\boldmath[\themarginpoints]}
+	% Question 1
+	\question[15] In sub parts (i) to (x) choose the correct option and in sub-part (xi) to (xv) answer the questions as instructed. \droppoints
+	\begin{parts}
+		\renewcommand{\thepartno}{\roman{partno}}
+		%MCQ 1
+		\part
+
+		\begin{oneparchoices}
+			\choice
+			\choice
+			\choice
+			\choice
+		\end{oneparchoices}
+	\end{parts}
+\end{questions}
+\centering
+\vspace{2cm}
+********
+\label{lastpage}
+\end{document}

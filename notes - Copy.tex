@@ -1,0 +1,374 @@
+%% ============================================================================
+%% TEMPLATE 1: ENHANCED STUDY NOTES VERSION
+%% ============================================================================
+% !TeX document class: article
+% !TeX spellcheck: en_US
+% !TeX encoding: UTF-8
+%
+% File: Enhanced_Article_Template.tex
+% Description: Professional article template for physics and mathematics notes
+% Keywords: physics, mathematics, education, professional, typography
+% Date: September 2025
+% Author: Sagar Tamhankar
+\documentclass[a4paper,12pt,twoside,openright]{article}
+
+%% ============================================================================
+%% CORE ENCODING & FONT SETUP
+%% ============================================================================
+\usepackage[T1]{fontenc}
+
+% Enhanced font selection - choose one:
+% Option 1: Latin Modern (default, good compatibility)
+\usepackage{lmodern}
+% Option 2: Times-like professional fonts (uncomment if preferred)
+% \usepackage{newtxtext,newtxmath}
+% Option 3: Palatino-like fonts (uncomment if preferred)
+% \usepackage{newpxtext,newpxmath}
+
+%% ============================================================================
+%% ENHANCED TYPOGRAPHY & SPACING
+%% ============================================================================
+\usepackage[final,babel=true]{microtype}
+\microtypesetup{
+    protrusion=true, 
+    expansion=true, 
+    tracking=true,
+    kerning=true,
+    spacing=true
+}
+\UseMicrotypeSet[protrusion]{basicmath}
+% Add these specific packages for study notes:
+ 
+\usepackage{setspace}
+\setstretch{1.2}              % More readable than \linespread{1.15}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\raggedbottom                 % More flexible than \flushbottom for articles
+
+%% ============================================================================
+%% PAGE LAYOUT & GEOMETRY
+%% ============================================================================
+\usepackage[
+    left=2.5cm, right=2.5cm, 
+    top=3cm, bottom=3cm,
+    headheight=15pt,
+    headsep=1cm,
+    footskip=1cm,
+    marginparwidth=2cm,
+    marginparsep=0.5cm
+]{geometry}
+
+%% ============================================================================
+%% ESSENTIAL PACKAGES (Organized by Category)
+%% ============================================================================
+
+% Math packages
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}        % Enhanced math environments
+\usepackage{physics}          % Physics notation
+\usepackage{siunitx}          % SI units formatting
+\DeclareMathOperator\cosec{cosec}
+
+% Graphics and visualization
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption,subcaption}
+\usepackage{wrapfig}
+\usepackage{multicol}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx,longtable}
+\usepackage{tabularray}       % Modern table package
+
+% Lists and enumeration
+\usepackage{enumitem}
+\setlist[enumerate]{label=(\alph*)}  % Professional enumeration style
+\setlist[itemize]{label=\textbullet}
+
+% Colors and highlighting
+\usepackage[table]{xcolor}
+\definecolor{primaryblue}{RGB}{0,102,153}
+\definecolor{secondarygreen}{RGB}{51,153,102}
+\definecolor{accentorange}{RGB}{255,153,51}
+\definecolor{warningred}{RGB}{204,51,51}
+\definecolor{backgroundgray}{RGB}{248,249,250}
+
+% TikZ and plotting
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots,pgfplotstable}
+\usepackage[americanvoltages,fulldiodes,siunitx]{circuitikz}
+
+\usetikzlibrary{
+    patterns, arrows.meta, calc, arrows, 
+    shadows.blur, math, angles, shapes.geometric,
+    positioning, decorations.pathmorphing,
+    backgrounds, fit
+}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{statistics,fillbetween}
+\tikzset{>=Stealth}  % Modern arrow style
+
+%% ============================================================================
+%% ENHANCED TCOLORBOX ENVIRONMENTS
+%% ============================================================================
+\usepackage[most,breakable]{tcolorbox}
+\tcbuselibrary{skins,raster,theorems}
+
+% Study-specific environments
+ \newtcolorbox{keypoint}[1][]{
+     enhanced,
+     colback=accentorange!15,
+     colframe=accentorange!80!black,
+     leftrule=5mm,
+     rightrule=0pt,
+     toprule=0pt,
+     bottomrule=0pt,
+     sharp corners,
+     breakable,
+     #1
+ }
+
+ \newtcolorbox{formula}[2][]{
+     enhanced,
+     colback=primaryblue!5,
+     colframe=primaryblue!80!black,
+     title={\textbf{Formula: #2}},
+     fonttitle=\sffamily\bfseries,
+     center title,
+     sharp corners,
+     breakable,
+     #1
+ }
+
+% Definition Box - Enhanced Professional Style
+\newtcolorbox{definition}[2][]{
+    enhanced,
+    colback=primaryblue!5,
+    colframe=primaryblue!80!black,
+    colbacktitle=primaryblue!80!black,
+    coltitle=white,
+    title={\textbf{Definition: #2}},
+    fonttitle=\sffamily\bfseries,
+    attach boxed title to top left={
+        xshift=0.5cm,
+        yshift=-3mm,
+        yshifttext=-1mm
+    },
+    boxed title style={
+        enhanced,
+        size=small,
+        colframe=primaryblue!80!black,
+        sharp corners
+    },
+    sharp corners,
+    drop shadow={black!20!white},
+    breakable,
+    #1
+}
+
+% Theorem Box
+\newtcolorbox{theorem}[2][]{
+    enhanced,
+    colback=secondarygreen!5,
+    colframe=secondarygreen!80!black,
+    colbacktitle=secondarygreen!80!black,
+    coltitle=white,
+    title={\textbf{Theorem: #2}},
+    fonttitle=\sffamily\bfseries,
+    attach boxed title to top left={
+        xshift=0.5cm,
+        yshift=-3mm,
+        yshifttext=-1mm
+    },
+    boxed title style={
+        enhanced,
+        size=small,
+        colframe=secondarygreen!80!black,
+        sharp corners
+    },
+    sharp corners,
+    drop shadow={black!20!white},
+    breakable,
+    #1
+}
+
+% Note Box - Enhanced
+\newtcolorbox{noteBox}[1][]{
+    enhanced,
+    colback=accentorange!10,
+    colframe=accentorange!80!black,
+    colbacktitle=accentorange!80!black,
+    coltitle=white,
+    title={\textbf{Note}},
+    fonttitle=\sffamily\bfseries,
+    attach boxed title to top left={
+        xshift=0.5cm,
+        yshift=-3mm,
+        yshifttext=-1mm
+    },
+    boxed title style={
+        enhanced,
+        size=small,
+        colframe=accentorange!80!black,
+        sharp corners
+    },
+    sharp corners,
+    drop shadow={black!20!white},
+    breakable,
+    #1
+}
+
+% Example Box
+\newtcolorbox{example}[2][]{
+    enhanced,
+    colback=backgroundgray,
+    colframe=gray!60!black,
+    colbacktitle=gray!60!black,
+    coltitle=white,
+    title={\textbf{Example: #2}},
+    fonttitle=\sffamily\bfseries,
+    attach boxed title to top left={
+        xshift=0.5cm,
+        yshift=-3mm,
+        yshifttext=-1mm
+    },
+    boxed title style={
+        enhanced,
+        size=small,
+        colframe=gray!60!black,
+        sharp corners
+    },
+    sharp corners,
+    breakable,
+    #1
+}
+
+% Warning/Important Box
+\newtcolorbox{important}[1][]{
+    enhanced,
+    colback=warningred!10,
+    colframe=warningred!80!black,
+    colbacktitle=warningred!80!black,
+    coltitle=white,
+    title={\textbf{Important}},
+    fonttitle=\sffamily\bfseries,
+    attach boxed title to top left={
+        xshift=0.5cm,
+        yshift=-3mm,
+        yshifttext=-1mm
+    },
+    boxed title style={
+        enhanced,
+        size=small,
+        colframe=warningred!80!black,
+        sharp corners
+    },
+    sharp corners,
+    drop shadow={black!20!white},
+    breakable,
+    #1
+}
+
+%% ============================================================================
+%% ENHANCED INLINE COMMANDS
+%% ============================================================================
+\newcommand{\highlight}[1]{\textcolor{primaryblue}{\textbf{#1}}}
+\newcommand{\emphred}[1]{\textcolor{warningred!80!black}{\textbf{#1}}}
+\newcommand{\emphblue}[1]{\textcolor{primaryblue!80!black}{\textbf{#1}}}
+\newcommand{\emphgreen}[1]{\textcolor{secondarygreen!80!black}{\textbf{#1}}}
+
+%% ============================================================================
+%% ENHANCED HEADER & FOOTER
+%% ============================================================================
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all
+
+% Enhanced header design
+\fancyhead[LE]{\sffamily\bfseries\color{primaryblue}\leftmark}
+\fancyhead[RO]{\sffamily\bfseries\color{primaryblue}\rightmark}
+\fancyhead[LO,RE]{\sffamily\small The Cathedral \& John Connon School}
+
+% Enhanced footer design
+\fancyfoot[LE,RO]{\sffamily\bfseries Page \thepage\ of \pageref{LastPage}}
+\fancyfoot[LO,RE]{\sffamily\small Physics \& Mathematics Department}
+
+% Custom rule under header
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
+
+%% ============================================================================
+%% SECTION STYLING - ENHANCED
+%% ============================================================================
+\usepackage{sectsty}
+\sectionfont{\sffamily\Large\bfseries\color{primaryblue}}
+\subsectionfont{\sffamily\large\bfseries\color{secondarygreen!80!black}}
+\subsubsectionfont{\sffamily\normalsize\bfseries\color{gray!70!black}}
+
+%% ============================================================================
+%% ENHANCED WATERMARK
+%% ============================================================================
+\usepackage[firstpageonly]{draftwatermark}
+\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkScale{0.4}
+\SetWatermarkLightness{0.9}
+\SetWatermarkAngle{45}
+
+%% ============================================================================
+%% GRAPHICS PATH
+%% ============================================================================
+%\graphicspath{{I:/My Drive/Latex/Images/}} % Windows
+\graphicspath{{D:/Latex/images/}}          % Windows
+%\graphicspath{{G:/Other computers/My Computer (1)/latex/images/}} % Laptop
+%\graphicspath{{/media/sagar/0E605F52605F401F/latex/images/}} % Linux
+%\graphicspath{{./Images/}} % Adjust path for your images if different from book's
+
+%% ============================================================================
+%% DOCUMENT METADATA & HYPERREF
+%% ============================================================================
+\title{Physics \& Mathematics Notes}
+\author{Sagar Tamhankar}
+\date{\today}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor={Sagar Tamhankar},
+    pdftitle={Physics \& Mathematics Educational Material},
+    pdfsubject={Physics and Mathematics Education},
+    pdfkeywords={LaTeX, Physics, Mathematics, Education, ICSE, ISC},
+    colorlinks=true,
+    linkcolor=primaryblue,
+    citecolor=secondarygreen,
+    urlcolor=primaryblue,
+    filecolor=accentorange,
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=2,
+    pdfstartview=FitH,
+    linktoc=all,
+    pdfcreator={LaTeX with Enhanced Template}
+}
+
+% Additional utility packages
+\usepackage{todonotes}
+\usepackage{tfrupee}
+\usepackage{qrcode}
+\usepackage{comment}
+
+%% ============================================================================
+%% DOCUMENT BEGIN - NOTES TEMPLATE
+%% ============================================================================
+\begin{document}
+
+% Uncomment for title page
+% \maketitle
+% \thispagestyle{empty}
+% \newpage
+
+% Your content goes here
+
+\end{document}
