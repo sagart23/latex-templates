@@ -31,7 +31,7 @@ These templates are designed for teachers, tutors, and schools who want clean, c
 1. Clone the repository
    ```
    git clone https://github.com/<your-username>/<your-repo>.git
-```
+   ```
 3. Use any LaTeX editor
 Compatible with:
 - Overleaf
@@ -40,11 +40,11 @@ Compatible with:
 - MiKTeX & TeX Live
 - Noevim
 4. Compile
-```
-pdflatex <filename>.tex
-OR
-xelatex <filename>.tex
-```
+   ```
+   pdflatex <filename>.tex
+   OR
+   xelatex <filename>.tex
+   ```
 5. Use Cases
 Perfect for:
 - Teachers preparing ICSE/ISC question papers
