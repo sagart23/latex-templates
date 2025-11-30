@@ -1,220 +1,15 @@
-%   ============================================================================
-%   TEMPLATE 3: ENHANCED EXAM QUESTION PAPER
-%   ============================================================================
-%  !TeX document class: exam
-%  !TeX spellcheck: en_US
-
-\documentclass[a4paper,addpoints,12pt,answers]{exam}   
+\documentclass[a4paper,addpoints,12pt,answers]{exam}
 
 %   ============================================================================
-%   CORE SETUP (Same as above)
+%   COMMON STYLE PACKAGES (correct loading order)
 %   ============================================================================
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-
-%% ============================================================================
-%% ENHANCED TYPOGRAPHY & SPACING
-%% ============================================================================
-\usepackage[final]{microtype}
-\microtypesetup{
-    protrusion=true, 
-    expansion=true
-}
-\UseMicrotypeSet[protrusion]{basicmath}
-%   ============================================================================
-%   ENHANCED EXAM-SPECIFIC GEOMETRY
-%   ============================================================================
-\usepackage[
-    left=2cm, right=2cm, 
-    top=2.5cm, bottom=2.5cm,
-    headheight=25pt,
-    headsep=0.8cm,
-    footskip=0.8cm
-]{geometry}
-
-%% ============================================================================
-%% ESSENTIAL PACKAGES (Organized by Category)
-%% ============================================================================
-
-% Math packages
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{mathtools}        % Enhanced math environments
-\usepackage{physics}          % Physics notation
-\usepackage{siunitx}          % SI units formatting
-\DeclareMathOperator\cosec{cosec}
-\usepackage{tfrupee}
-
-% Graphics and visualization
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{caption,subcaption}
-\usepackage{wrapfig}
-\usepackage{multicol}
-
-% Tables
-\usepackage{booktabs}
-\usepackage{tabularx,longtable}
-\usepackage{tabularray}       % Modern table package
-
-% Lists and enumeration
-\usepackage{enumitem}
-%\setlist[enumerate]{label=(\alph*)}  % Professional enumeration style
-%\setlist[itemize]{label=\textbullet}
-\usepackage{setspace}
-
-% Colors and highlighting
-\usepackage[table]{xcolor}
-\definecolor{primaryblue}{RGB}{0,102,153}
-\definecolor{secondarygreen}{RGB}{51,153,102}
-\definecolor{accentorange}{RGB}{255,153,51}
-\definecolor{warningred}{RGB}{204,51,51}
-\definecolor{backgroundgray}{RGB}{248,249,250}
-
-% TikZ and plotting
-\usepackage{tikz}
-\usepackage{tkz-euclide}
-\usepackage{pgfplots,pgfplotstable}
-\usepackage[americanvoltages,fulldiodes,siunitx]{circuitikz}
-
-\usetikzlibrary{
-    patterns, arrows.meta, calc, arrows, 
-    shadows.blur, math, angles, shapes.geometric,
-    positioning, decorations.pathmorphing,
-    backgrounds, fit
-}
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{statistics,fillbetween}
-\tikzset{>=Stealth}  % Modern arrow style
-
-%% ============================================================================
-%% ENHANCED TCOLORBOX ENVIRONMENTS
-%% ============================================================================
-\usepackage[most,breakable]{tcolorbox}
-\tcbuselibrary{skins,raster,theorems}
-
-% Professional Exam Header Box
-\newtcolorbox{examheaderbox}{
-    enhanced,
-    colback=white,
-    colframe=examblue,
-    boxrule=2pt,
-    arc=3mm,
-    drop shadow={black!50!white},
-    left=1em,
-    right=1em,
-    top=1em,
-    bottom=1em,
-    fontupper=\sffamily
-}
-
-% Instructions Box - Professional Style
-\newtcolorbox{instructionsbox}{
-    enhanced,
-    colback=backgroundgray!30,
-    colframe=headerblue,
-    colbacktitle=headerblue,
-    coltitle=white,
-    title={\sffamily\bfseries Instructions},
-    fonttitle=\sffamily\bfseries\large,
-    attach boxed title to top center={yshift=-3mm},
-    boxed title style={
-        enhanced,
-        size=small,
-        colframe=headerblue,
-        arc=2mm
-    },
-    arc=2mm,
-    boxrule=1.5pt,
-    drop shadow={black!20!white},
-    breakable,
-    left=1em,
-    right=1em,
-    top=1.5em,
-    bottom=1em,
-}
-
-% Section Header Box
-\newtcolorbox{sectionbox}[2]{
-    enhanced,
-    colback=primaryblue!10,
-    colframe=primaryblue!80!black,
-    colbacktitle=primaryblue!80!black,
-    coltitle=white,
-    title={\sffamily\bfseries\large SECTION #1},
-    fonttitle=\sffamily\bfseries\large,
-    subtitle style={
-        fontupper=\sffamily\itshape,
-        colback=primaryblue!5
-    },
-    center title,
-    arc=2mm,
-    boxrule=1pt,
-    drop shadow={black!20!white},
-    left=1em,
-    right=1em,
-    top=0.8em,
-    bottom=0.8em,
-    after title={\\\normalsize\itshape #2}
-}
-
-% Question Paper Content Box
-\newtcolorbox{questionbox}{
-    enhanced,
-   % colback=white,
-    colframe=gray!40,
-    frame hidden,
-    boxrule=1pt,
-    arc=1mm,
-    left=1em,
-    right=1em,
-    top=1em,
-    bottom=1em,
-    breakable,
-      % Makes background completely transparent
-    overlay={
-        \draw[line width=1pt, gray!40, rounded corners=1mm] 
-        (frame.north west) rectangle (frame.south east);
-    }, opacityback=0, 
-}
-
-% Grade Table Box
-\newtcolorbox{gradetablebox}{
-    enhanced,
-    colback=backgroundgray!20,
-    colframe=examblue,
-    boxrule=1pt,
-    arc=2mm,
-    left=0.5em,
-    right=0.5em,
-    top=0.5em,
-    bottom=0.5em,
-    center upper
-}
-
+\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
+\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
+\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
+\usepackage{sagar-exam-core}               % Exam geometry & formatting
 
 %   ============================================================================
-%   ENHANCED EXAM CLASS CUSTOMIZATIONS
-%   ============================================================================
-%  Professional question formatting
-\renewcommand{\questionlabel}{\sffamily\bfseries Q.\thequestion}
-\renewcommand{\partlabel}{\sffamily\bfseries(\thepartno)}
-\renewcommand{\subpartlabel}{\sffamily\bfseries\thesubpart.}
-
-%  Enhanced point display
-\pointsdroppedatright
-\marksnotpoints
-\pointformat{\sffamily\bfseries[\themarginpoints]}
-\setlength{\rightpointsmargin}{2.5cm}
-
-%  Professional section headers for exam
-\newcommand{\sectionheader}[2]{
-    \begin{sectionbox}{#1}{#2}
-    \end{sectionbox}
-    \vspace{1em}
-}
-
-%   ============================================================================
-%   ENHANCED WATERMARK FOR EXAMS
+%   WATERMARK (after geometry is set)
 %   ============================================================================
 \usepackage[firstpageonly]{draftwatermark}
 \SetWatermarkText{CAJCS}
@@ -223,312 +18,313 @@
 \SetWatermarkAngle{45}
 
 %   ============================================================================
-%   SAMPLE EXAM DOCUMENT STRUCTURE
+%   GRAPHICS PATH
+%   ============================================================================
+\graphicspath{{./Images/}}
+
+%   ============================================================================
+%   HYPERREF (always last)
+%   ============================================================================
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor   = {Sagar Tamhankar},
+    pdftitle    = {ICSE Mathematics Exam},
+    pdfsubject  = {Mathematics - Standard 10},
+    colorlinks  = true,
+    linkcolor   = primaryblue,
+    urlcolor    = primaryblue,
+    citecolor   = secondarygreen
+}
+
+%   ============================================================================
+%   DOCUMENT START
 %   ============================================================================
 \begin{document}
 
-% Header and Footer Details (these exam class commands override fancyhdr)
-% Keep these here as they define your specific exam header/footer.
+% Header and Footer (exam class commands)
 \lhead{}
 \chead{}
 \rhead{}
 \lfoot{}
-\cfoot{Page \thepage\ of \numpages} % This correctly uses \numpages provided by exam/lastpage
+\cfoot{Page \thepage\ of \numpages}
 \rfoot{}
 
-% Professional Exam Header
-%\begin{examheaderbox}
+% School Header
 \begin{center}
-	% \includegraphics[scale=0.4]{clogo} \\
-	% \includegraphics[width=0.6\textwidth]{cajcs.JPG}   \\
-	\large{\textbf{First Term Examination - September 2022}}   \\
+   \includegraphics[scale=0.4]{clogo} \\
+   \includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
+   \large{\textbf{First Term Examination - September 2022}} \\
 \end{center}
-\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \hspace{1cm} \\
-\textbf{Std: 10 ICSE} \hfill \textbf{Time: 3 hrs} \hspace{1cm} \\
-\textbf{Date: 05-09-2022} \\
-\textbf{\textit{ Reading time : 15 minutes}}
 
-%\vspace{1em}
-%	\begin{center}
-%		\begin{gradetablebox}
-%			\cellwidth{0.8cm}
-%			\settabletotalpoints{80}
-%			\hpword{Marks}
-%			\gradetable[h][questions]
-%		\end{gradetablebox}
-%	\end{center}
-%\end{examheaderbox}
+% Exam Details
+\noindent
+\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \\
+\textbf{Std: 10 ICSE} \hfill \textbf{Time: 3 hrs} \\
+\textbf{Date: 05-09-2022}
 
 \hrulefill
 
-%\begin{instructionsbox}
-	\begin{center}
-		\begin{itemize}[leftmargin=0pt, itemsep=0.3em]
-			\item Answers to this must be written on the paper provided separately.
-			\item You will not be allowed to write during first 15 minutes.
-			\item This time is to be spent in reading the question paper.
-			\item The time given at the head of this paper is the time allowed for writing answers.
-			\item This question paper consists of \textbf{\numpages} printed pages.
-			\item[\textbf{•}] Attempt \textbf{all} questions from \textbf{Section A} and \textbf{any four} questions from \textbf{Section B}.
-			\item All working, including rough work, must be clearly shown, and must be done on the same sheet as the rest of the answer.
-			\item Omission of essential working will result in loss of marks.
-			\item The intended marks for questions or parts of questions are given in brackets [ ].
-			\item Mathematical tables are provided.
-		\end{itemize}
+% Instructions
+\begin{center}
+  \begin{itemize}[leftmargin=0pt, itemsep=0.3em]
+    \item Answers to this must be written on the paper provided separately.
+    \item You will not be allowed to write during first 15 minutes.
+    \item This time is to be spent in reading the question paper.
+    \item The time given at the head of this paper is the time allowed for writing answers.
+    \item This question paper consists of \textbf{\numpages} printed pages.
+    \item[\textbf{•}] Attempt \textbf{all} questions from \textbf{Section A} and \textbf{any four} questions from \textbf{Section B}.
+    \item All working, including rough work, must be clearly shown, and must be done on the same sheet as the rest of the answer.
+    \item Omission of essential working will result in loss of marks.
+    \item The intended marks for questions or parts of questions are given in brackets [ ].
+    \item Mathematical tables are provided.
+  \end{itemize}
 
-		\vspace{1em}
-%		\begin{tcolorbox}[
-%				enhanced,
-%				colback=warningred!10,
-%				colframe=warningred!80!black,
-%				arc=2mm,
-%				boxrule=1pt,
-%				left=0.5em,
-%				right=0.5em,
-%				top=0.5em,
-%				bottom=0.5em
-%			]
-			\textbf{Instructions for Supervising Examiner:}\\
-			Kindly read aloud the instructions given above to all candidates present in the examination hall.
-%		\end{tcolorbox}
-	\end{center}
-%\end{instructionsbox}
+  \vspace{1em}
+  \textbf{Instructions for Supervising Examiner:}\\
+  Kindly read aloud the instructions given above to all candidates present in the examination hall.
+\end{center}
 
 \hrulefill
 
-%  \sectionheader{A}{Attempt all questions}
-
+%   ============================================================================
+%   SECTION A
+%   ============================================================================
 \begin{center}
-	\textbf{SECTION A} \\
-	\textit{Attempt all questions}
+  \textbf{SECTION A} \\
+  \textit{Attempt all questions}
 \end{center}
-%======================== Questions Begin ============================
+
 \begin{questions}
-	\doublespacing
-	\pointsdroppedatright
-	\marksnotpoints
-	%\marginpointname{ \points}
-	\setlength{\rightpointsmargin}{2.1cm}
-	\pointformat{\bfseries\boldmath[\themarginpoints]}
-	% Question 1
-	\question[15] Choose the correct answers to the questions from the given options. \droppoints
-	\begin{parts}
-		\renewcommand{\thepartno}{\roman{partno}}
-		%MCQ 1
-		\part this is new file.
+  \doublespacing
+  \pointsdroppedatright
+  \marksnotpoints
+  \setlength{\rightpointsmargin}{2.1cm}
+  \pointformat{\bfseries\boldmath[\themarginpoints]}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 2
-		\part
+  % Question 1 - Multiple Choice (15 marks)
+  \question[15] Choose the correct answers to the questions from the given options. \droppoints
+  \begin{parts}
+    \renewcommand{\thepartno}{\roman{partno}}
+    
+    % MCQ 1
+    \part This is new file.
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 2
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 3
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 4
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 5
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 6
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 7
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 8
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 9
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 10
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 11
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 12
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 13
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 14
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+    
+    % MCQ 15
+    \part 
+    \begin{oneparchoices}
+      \choice Option A
+      \choice Option B
+      \choice Option C
+      \choice Option D
+    \end{oneparchoices}
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 3
-		\part
+  % Question 2 (12 marks total)
+  \question
+  \begin{parts}
+    \part[4] \droppoints
+    \part[4] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 4
-		\part
+  % Question 3 (12 marks total)
+  \question
+  \begin{parts}
+    \part[4] \droppoints
+    \part[4] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 5
-		\part
+  %   ==========================================================================
+  %   SECTION B (40 marks)
+  %   ==========================================================================
+  \begin{center}
+    \textbf{SECTION B (40 marks)} \\
+    \textbf{Attempt any 4 questions}
+  \end{center}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 6
-		\part
+  % Question 4 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 7
-		\part
+  % Question 5 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 8
-		\part
+  % Question 6 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 9
-		\part
+  % Question 7 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 10
-		\part
+  % Question 8 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		% 11
-		\part
+  % Question 9 (10 marks)
+  \question
+  \begin{parts}
+    \part[3] \droppoints
+    \part[3] \droppoints
+    \part[4] \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		% 12
-		\part
-
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		% 13
-		\part
-
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		% 14
-		\part
-
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		% 15
-		\part
-
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-	\end{parts}
-
-	% Question 2
-	\question
-	\begin{parts}
-		\part[4]    \droppoints
-		\part[4]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-	% Question 3
-	\question
-	\begin{parts}
-		\part[4]    \droppoints
-		\part[4]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-% Section B Header
-%		\sectionheader{B}{Attempt any 4 questions (40 marks)}
-		
-	\begin{center}
-		\textbf{SECTION B (40 marks)} \\
-		\textbf{Attempt any 4 questions }
-	\end{center}
-	% Question 4
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-	% Question 5
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-	% Question 6
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-	% Question 7
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-	% Question 8
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-
-	% Question 9
-	\question
-	\begin{parts}
-		\part[3]    \droppoints
-		\part[3]    \droppoints
-		\part[4]    \droppoints
-	\end{parts}
-	% Question 10
-	\question
-	\begin{parts}
-		\part[4]    \droppoints
-		\part[6]    \droppoints
-	\end{parts}
+  % Question 10 (10 marks)
+  \question
+  \begin{parts}
+    \part[4] \droppoints
+    \part[6] \droppoints
+  \end{parts}
 
 \end{questions}
+
 \centering
 \vspace{2cm}
 ********
+
 \end{document}
