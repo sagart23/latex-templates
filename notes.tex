@@ -7,14 +7,7 @@
 \usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
 \usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
 \usepackage{sagar-article-core}            % Article geometry & formatting
-
-%   ============================================================================
-%   LIST CUSTOMIZATION (optional)
-%   ============================================================================
-\usepackage{enumitem}
-\setlist[enumerate]{label=(\alph*)}
-\setlist[itemize]{label=\textbullet}
-\usepackage{multicol}
+\input{sagar-notes-preamble.tex}
 %   ============================================================================
 %   WATERMARK (after geometry is set)
 %   ============================================================================
@@ -29,37 +22,6 @@
 %   ============================================================================
 \graphicspath{{./Images/}}
 
-%   ============================================================================
-%   HEADERS & FOOTERS
-%   ============================================================================
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-
-\pagestyle{fancy}
-\fancyhf{}
-
-% Header
-\fancyhead[LE]{\sffamily\bfseries\color{primaryblue}\leftmark}
-\fancyhead[RO]{\sffamily\bfseries\color{primaryblue}\rightmark}
-\fancyhead[LO,RE]{\sffamily\small The Cathedral \& John Connon School}
-
-% Footer
-\fancyfoot[LE,RO]{\sffamily\bfseries Page \thepage\ of \pageref{LastPage}}
-\fancyfoot[LO,RE]{\sffamily\small Physics \& Mathematics Department}
-
-% Thin blue rule under header
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\headrule}{%
-  \hbox to\headwidth{%
-    \color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
-
-%   ============================================================================
-%   SECTION STYLING
-%   ============================================================================
-\usepackage{sectsty}
-\sectionfont{\sffamily\Large\bfseries\color{primaryblue}}
-\subsectionfont{\sffamily\large\bfseries\color{secondarygreen!80!black}}
-\subsubsectionfont{\sffamily\normalsize\bfseries\color{gray!70!black}}
 
 %   ============================================================================
 %   DOCUMENT METADATA
@@ -83,17 +45,7 @@
     pdfstartview = FitH
 }
 
-%   ============================================================================
-%   CONDITIONAL COMPILATION FLAGS
-%   ============================================================================
-\newif\ifteacher
-\teacherfalse   % Change to \teachertrue for teacher version
 
-\newif\ifhint
-\hintfalse      % Change to \hinttrue to show hints
-
-\newif\ifanswer
-\answerfalse    % Change to \answertrue to show answers
 
 %   ============================================================================
 %   DOCUMENT BEGIN
