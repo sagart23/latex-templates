@@ -1,113 +1,36 @@
-\documentclass[a4paper,12pt,twoside]{article}
+\documentclass[teacher]{sagar-notes}
 
-%   ============================================================================
-%   COMMON STYLE PACKAGES (correct loading order)
-%   ============================================================================
-\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
-\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
-\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
-\usepackage{sagar-article-core}            % Article geometry & formatting
-\input{sagar-notes-preamble.tex}
+% ===============================
+% CONFIGURATION
+% ===============================
 
-%   ============================================================================
-%   WATERMARK (after geometry is set)
-%   ============================================================================
+%\setupschool{My School}{MS}{Physics Department}
+
+\graphicspath{{../../../../Images/}}
+
+% Mode
+%\studentmode
+\teachermode
+
+% ===============================
+% WATERMARK (optional)
+% ===============================
+
 \usepackage[firstpageonly]{draftwatermark}
 \SetWatermarkText{CAJCS Senior Section}
 \SetWatermarkScale{2.4}
 \SetWatermarkLightness{0.75}
 \SetWatermarkAngle{45}
 
+% ===============================
+% METADATA
+% ===============================
 
-
-%   ============================================================================
-%   DOCUMENT METADATA
-%   ============================================================================
 \title{Physics \& Mathematics Notes}
 \author{Sagar Tamhankar}
 \date{\today}
 
-%   ============================================================================
-%   HYPERREF (always last)
-%   ============================================================================
-\usepackage{hyperref}
-\hypersetup{
-  pdfauthor   = {Sagar Tamhankar},
-  pdftitle    = {Physics \& Mathematics Educational Material},
-  pdfsubject  = {Physics and Mathematics Education},
-  pdfkeywords = {LaTeX, Physics, Mathematics, Education, ICSE, ISC},
-  colorlinks  = true,
-  linkcolor   = primaryblue,
-  citecolor   = secondarygreen,
-  urlcolor    = primaryblue,
-  filecolor   = accentorange,
-  bookmarks   = true,
-  bookmarksopen      = true,
-  bookmarksopenlevel = 2,
-  pdfstartview       = FitH,
-  linktoc            = all,
-  pdfcreator         = {LaTeX with Sagar's article template}
-}
-
-
-%   ============================================================================
-%   DOCUMENT BEGIN
-%   ============================================================================
 \begin{document}
-
 \maketitle
-
-%   ============================================================================
-%   CONTENT
-%   ============================================================================
-
-\section{Introduction}
-
-Start writing your notes here…
-
-\begin{definition}{Sample Definition}
-This is a sample \emphblue{definition box} using \texttt{sagar-boxes.sty}.
-The logarithm base determines the exponential relationship.
-\end{definition}
-
-\begin{theorem}{Pythagorean Theorem}
-In a right-angled triangle, the square of the hypotenuse equals the sum of squares of the other two sides:
-\[ a^2 + b^2 = c^2 \]
-\end{theorem}
-
-\begin{example}{Computing Area}
-Find the area of a circle with radius \SI{5}{cm}.
-
-\begin{Mysolutionbox}
-Using $A = \pi r^2$:
-\[ A = \pi \times (5)^2 = 25\pi \approx \SI{78.54}{cm^2} \]
-\end{Mysolutionbox}
-\end{example}
-
-\begin{important}
-Always check units in physics calculations. Use the \texttt{siunitx} package for proper SI formatting.
-\end{important}
-
-\begin{noteBox}
-The \texttt{sagar-boxes.sty} package provides many box types:
-\begin{itemize}
-  \item \texttt{definition} - For formal definitions
-  \item \texttt{theorem} - For mathematical theorems
-  \item \texttt{example} - For worked examples
-  \item \texttt{noteBox} - For important notes
-  \item \texttt{important} - For critical information
-  \item \texttt{errorbox} - For common mistakes
-\end{itemize}
-\end{noteBox}
-
-\section{Advanced Topics}
-
-\subsection{Calculus Applications}
-
-More content here…
-
-\subsubsection{Differentiation}
-
-Further nested content…
 
 \end{document}
