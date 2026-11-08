@@ -18,7 +18,7 @@ Five templates built on the [sagar-* style files](https://github.com/sagart23/la
 ## Using a template
 1. Copy the file into your project and rename it.
 2. Edit the **EDIT THIS BLOCK** at the top (title, date, class, marks, time, watermark).
-3. Fill in the questions. For multiple choice use `\mcq{question}{A}{B}{C}{D}`.
+3. Fill in the questions. For multiple choice use `oneparchoices` (options in one line) or `choices` (one per line), whichever the question needs.
 4. Compile **twice** (page totals such as "Page 1 of N" need a second run), with `pdflatex`, `lualatex` or `xelatex`.
 
 LuaLaTeX/XeLaTeX give Libertinus fonts automatically (via `sagar-fonts`). pdfLaTeX keeps Latin Modern. The same file builds in both, so the old separate `*Lua` templates are no longer needed.
