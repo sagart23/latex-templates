@@ -1,36 +1,44 @@
-\documentclass[teacher]{sagar-notes}
+% !TEX program = pdflatex
+% ============================================================================
+%  Worksheet / simple document -- STUDENT copy
+%  (the same source builds the teacher copy: change [student] to [teacher])
+%  pdfLaTeX by default; LuaLaTeX/XeLaTeX gives Libertinus fonts automatically.
+% ============================================================================
+\documentclass[student]{sagar-notes}
 
-% ===============================
-% CONFIGURATION
-% ===============================
+\usepackage{sagar-fonts}   % no-op under pdfLaTeX
 
-%\setupschool{My School}{MS}{Physics Department}
+% \setupschool{School name}{Short}{Department}
+\setupschool{The Cathedral \& John Connon School}{CAJCS}{Mathematics Department}
 
-\graphicspath{{../../../../Images/}}
-
-% Mode
-%\studentmode
-\teachermode
-
-% ===============================
-% WATERMARK (optional)
-% ===============================
-
+% Optional watermark (first page only).  Scale 0.45 / lightness 0.92 fits A4.
 \usepackage[firstpageonly]{draftwatermark}
 \SetWatermarkText{CAJCS Senior Section}
-\SetWatermarkScale{2.4}
-\SetWatermarkLightness{0.75}
+\SetWatermarkScale{0.45}
+\SetWatermarkLightness{0.92}
 \SetWatermarkAngle{45}
 
-% ===============================
-% METADATA
-% ===============================
+% Images: \graphicspath{{./images/}}  -- or keep them in your TEXMF folder
+%\graphicspath{{../../../../Images/}}
 
-\title{Physics \& Mathematics Notes}
+\title{Worksheet -- Topic}
 \author{Sagar Tamhankar}
 \date{\today}
 
 \begin{document}
 \maketitle
+
+\section{Practice questions}
+\begin{enumerate}[label=\arabic*.]
+  \item Solve $x^2-5x+6=0$.
+        \hint{Find two numbers with product $6$ and sum $-5$.}
+        \ans{$x=2$ or $x=3$}
+  \item A shirt costs \rupee 450. Find its price after a $20\%$ discount.
+        \ans{\rupee 360}
+\end{enumerate}
+
+\begin{noteBox}
+Boxes, \texttt{multicols}, tables and TikZ are all available. See the style README.
+\end{noteBox}
 
 \end{document}
