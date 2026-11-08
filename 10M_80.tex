@@ -1,94 +1,101 @@
-\documentclass[a4paper,addpoints,12pt,answers]{exam}
+% !TEX program = pdflatex
+% ============================================================================
+%  ICSE Class 10 -- Mathematics -- 80 marks
+%  Works with pdfLaTeX (default) and LuaLaTeX/XeLaTeX (Libertinus fonts, automatic).
+%  Needs the sagar-* style files installed in your TEXMF tree (see styles README).
+% ============================================================================
+\documentclass[a4paper,addpoints,12pt]{exam}   % answers: put \printanswers below, not here
 
-%   ============================================================================
-%   COMMON STYLE PACKAGES (correct loading order)
-%   ============================================================================
-\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
-\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
-\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
-\usepackage{sagar-exam-core}               % Exam geometry & formatting
+% ============================================================================
+%  EDIT THIS BLOCK FOR EACH PAPER
+% ============================================================================
+\newcommand{\examtitle}{First Term Examination -- September 2026}
+\newcommand{\examdate}{DD-MM-YYYY}
+\newcommand{\examsubject}{Mathematics}
+\newcommand{\examstd}{10 ICSE}
+\newcommand{\exammarks}{80}
+\newcommand{\examtime}{3 hrs}
+\newcommand{\watermarktext}{CAJCS}
+%\printanswers        % uncomment to print solutions for the teacher's copy
 
-%   ============================================================================
-%   WATERMARK (after geometry is set)
-%   ============================================================================
+% ============================================================================
+%  STYLE PACKAGES (order matters)
+% ============================================================================
+\usepackage{sagar-math}                 % maths, siunitx, \rupee
+\usepackage{sagar-graphics-tikz-core}   % TikZ, tkz-euclide, pgfplots
+\usepackage{sagar-boxes}                % palette + boxes
+\usepackage{sagar-exam-core}            % margins, labels, \mcq
+\usepackage{sagar-fonts}                % Libertinus under Lua/XeLaTeX; no-op under pdfLaTeX
+
+% Watermark (first page only)
 \usepackage[firstpageonly]{draftwatermark}
-\SetWatermarkText{CAJCS}
+\SetWatermarkText{\watermarktext}
 \SetWatermarkScale{0.3}
 \SetWatermarkLightness{0.95}
 \SetWatermarkAngle{45}
 
-%   ============================================================================
-%   GRAPHICS PATH
-%   ============================================================================
+% Logos: either keep clogo / cajcs.JPG in a folder that is on this path ...
 \graphicspath{{../../../../Images/}}
+% ... or put them in your TEXMF folder next to the styles and delete the line above.
 
-%   ============================================================================
-%   HYPERREF (always last)
-%   ============================================================================
+% hyperref always last
 \usepackage{hyperref}
 \hypersetup{
     pdfauthor   = {Sagar Tamhankar},
-    pdftitle    = {ICSE Mathematics Exam},
-    pdfsubject  = {Mathematics - Standard 10},
+    pdftitle    = {\examtitle},
+    pdfsubject  = {\examsubject -- Standard 10},
     colorlinks  = true,
     linkcolor   = primaryblue,
     urlcolor    = primaryblue,
     citecolor   = secondarygreen
 }
 
-%   ============================================================================
-%   DOCUMENT START
-%   ============================================================================
+% ============================================================================
 \begin{document}
 
-% Header and Footer (exam class commands)
-\lhead{}
-\chead{}
-\rhead{}
-\lfoot{}
-\cfoot{Page \thepage\ of \numpages}
-\rfoot{}
+% Header / footer (exam class commands)
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{Page \thepage\ of \numpages}\rfoot{}
 
-% School Header
+% School header
 \begin{center}
    \includegraphics[scale=0.4]{clogo} \\
    \includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
-   \large{\textbf{First Term Examination - September 2022}} \\
+   \large{\textbf{\examtitle}} \\
 \end{center}
 
-% Exam Details
+% Exam details
 \noindent
-\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \\
-\textbf{Std: 10 ICSE} \hfill \textbf{Time: 3 hrs} \\
-\textbf{Date: 05-09-2022}
+\textbf{Sub: \examsubject} \hfill \textbf{Mark: \exammarks} \\
+\textbf{Std: \examstd} \hfill \textbf{Time: \examtime} \\
+\textbf{Date: \examdate}
 
 \hrulefill
 
 % Instructions
-\begin{center}
-  \begin{itemize}[leftmargin=0pt, itemsep=0.3em]
-    \item Answers to this must be written on the paper provided separately.
-    \item You will not be allowed to write during first 15 minutes.
-    \item This time is to be spent in reading the question paper.
-    \item The time given at the head of this paper is the time allowed for writing answers.
-    \item This question paper consists of \textbf{\numpages} printed pages.
-    \item[\textbf{•}] Attempt \textbf{all} questions from \textbf{Section A} and \textbf{any four} questions from \textbf{Section B}.
-    \item All working, including rough work, must be clearly shown, and must be done on the same sheet as the rest of the answer.
-    \item Omission of essential working will result in loss of marks.
-    \item The intended marks for questions or parts of questions are given in brackets [ ].
-    \item Mathematical tables are provided.
-  \end{itemize}
+\begin{itemize}[leftmargin=1.2em, itemsep=0.3em]
+  \item Answers to this must be written on the paper provided separately.
+  \item You will not be allowed to write during first 15 minutes.
+  \item This time is to be spent in reading the question paper.
+  \item The time given at the head of this paper is the time allowed for writing answers.
+  \item This question paper consists of \textbf{\numpages} printed pages.
+  \item Attempt \textbf{all} questions from \textbf{Section A} and \textbf{any four} questions from \textbf{Section B}.
+  \item All working, including rough work, must be clearly shown, and must be done on the same sheet as the rest of the answer.
+  \item Omission of essential working will result in loss of marks.
+  \item The intended marks for questions or parts of questions are given in brackets [ ].
+  \item Mathematical tables are provided.
+\end{itemize}
 
-  \vspace{1em}
+\begin{center}
   \textbf{Instructions for Supervising Examiner:}\\
   Kindly read aloud the instructions given above to all candidates present in the examination hall.
 \end{center}
 
 \hrulefill
 
-%   ============================================================================
-%   SECTION A
-%   ============================================================================
+% ============================================================================
+%  SECTION A  (40 marks)
+% ============================================================================
 \begin{center}
   \textbf{SECTION A} \\
   \textit{Attempt all questions}
@@ -97,149 +104,28 @@
 \begin{questions}
   \doublespacing
 
-
-  % Question 1 - Multiple Choice (15 marks)
+  % Question 1 -- multiple choice (15 marks)
   \question[15] Choose the correct answers to the questions from the given options. \droppoints
   \begin{parts}
     \renewcommand{\thepartno}{\roman{partno}}
-    
-    % MCQ 1
-    \part This is new file.
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 2
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 3
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 4
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 5
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 6
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 7
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 8
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 9
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 10
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 11
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 12
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 13
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 14
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 15
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (i)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (ii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (iii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (iv)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (v)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (vi)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (vii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (viii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (ix)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (x)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (xi)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (xii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (xiii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (xiv)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}  % (xv)
   \end{parts}
 
-  % Question 2 (12 marks total)
+  % Question 2 (12 marks in this template -- check against your paper pattern)
   \question
   \begin{parts}
     \part[4] \droppoints
@@ -247,7 +133,7 @@
     \part[4] \droppoints
   \end{parts}
 
-  % Question 3 (12 marks total)
+  % Question 3 (12 marks in this template -- check against your paper pattern)
   \question
   \begin{parts}
     \part[4] \droppoints
@@ -255,14 +141,13 @@
     \part[4] \droppoints
   \end{parts}
 
-  %   ==========================================================================
-  %   SECTION B (40 marks)
-  %   ==========================================================================
+  % ==========================================================================
+  %  SECTION B  (40 marks -- any FOUR questions of 10 marks)
+  % ==========================================================================
   \begin{center}
     \textbf{SECTION B (40 marks)} \\
     \textbf{Attempt any 4 questions}
   \end{center}
-
   % Question 4 (10 marks)
   \question
   \begin{parts}
@@ -311,6 +196,7 @@
     \part[4] \droppoints
   \end{parts}
 
+
   % Question 10 (10 marks)
   \question
   \begin{parts}
@@ -320,8 +206,9 @@
 
 \end{questions}
 
-\centering
-\vspace{2cm}
-********
+\begin{center}
+  \vspace{2cm}
+  ********
+\end{center}
 
 \end{document}
