@@ -1,10 +1,14 @@
+% !TEX program = pdflatex
+% ============================================================================
+%  Notes -- TEACHER copy (shows \hint, \ans and \teacheronly text)
+%  Change [teacher] to [student] to hide them.
+%  pdfLaTeX by default; LuaLaTeX/XeLaTeX gives Libertinus fonts automatically.
+% ============================================================================
 \documentclass[teacher]{sagar-notes}
 
-\setupschool{My School}{MS}{Physics Department}
+\usepackage{sagar-fonts}   % no-op under pdfLaTeX
 
-\graphicspath{{../../../../Images/}}
-
-\teachermode
+\setupschool{The Cathedral \& John Connon School}{CAJCS}{Physics Department}
 
 \usepackage[firstpageonly]{draftwatermark}
 \SetWatermarkText{CAJCS Senior Section}
@@ -12,10 +16,33 @@
 \SetWatermarkLightness{0.92}
 \SetWatermarkAngle{45}
 
+% Images: \graphicspath{{./images/}}  -- or keep them in your TEXMF folder
+%\graphicspath{{../../../../Images/}}
+
 \title{Physics \& Mathematics Notes}
 \author{Sagar Tamhankar}
 \date{\today}
 
 \begin{document}
+\maketitle
+\tableofcontents
+
+\section{Topic}
+\subsection{Key ideas}
+\begin{definition}{Term}
+Definition goes here.
+\end{definition}
+
+\begin{theorem}{Name}
+Statement goes here.
+\end{theorem}
+
+\begin{example}{Worked example}
+Solution goes here.
+\end{example}
+
+\hint{Hint shown to students only in teacher mode or when enabled.}
+\ans{Answer, visible in teacher mode.}
+\teacheronly{Remark for the teacher only.}
 
 \end{document}
