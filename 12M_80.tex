@@ -1,401 +1,252 @@
-\documentclass[a4paper,addpoints,12pt,answers]{exam}
+% !TEX program = pdflatex
+% ============================================================================
+%  ISC Class 12 -- Mathematics -- 80 marks
+%  Works with pdfLaTeX (default) and LuaLaTeX/XeLaTeX (Libertinus fonts, automatic).
+%  Needs the sagar-* style files installed in your TEXMF tree (see styles README).
+%
+%  Pattern: A = 20 (Q1)  |  B = 14 (Q2-8, 2 marks)  |  C = 21 (Q9-15, 3 marks)
+%           D = 25 (Q16-20, 5 marks)   -> 20 questions, 80 marks
+%  The marks are totalled in the log after compiling: look for "Total marks".
+% ============================================================================
+\documentclass[a4paper,addpoints,12pt]{exam}   % answers: put \printanswers below, not here
 
-%   ============================================================================
-%   COMMON STYLE PACKAGES (correct loading order)
-%   ============================================================================
-\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
-\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
-\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
-\usepackage{sagar-exam-core}               % Exam geometry & formatting
+% ============================================================================
+%  EDIT THIS BLOCK FOR EACH PAPER
+% ============================================================================
+\newcommand{\examtitle}{First Term Examination -- September 2026}
+\newcommand{\examdate}{DD-MM-YYYY}
+\newcommand{\examsubject}{Mathematics}
+\newcommand{\examstd}{12 ISC}
+\newcommand{\exammarks}{80}
+\newcommand{\examtime}{3 hrs}
+\newcommand{\watermarktext}{CAJCS}
+%\printanswers        % uncomment to print solutions for the teacher's copy
 
-%   ============================================================================
-%   WATERMARK (after geometry is set)
-%   ============================================================================
+% ============================================================================
+%  STYLE PACKAGES (order matters)
+% ============================================================================
+\usepackage{sagar-math}
+\usepackage{sagar-graphics-tikz-core}
+\usepackage{sagar-boxes}
+\usepackage{sagar-exam-core}            % margins, labels, \mcq
+\usepackage{sagar-fonts}                % Libertinus under Lua/XeLaTeX; no-op under pdfLaTeX
+
 \usepackage[firstpageonly]{draftwatermark}
-\SetWatermarkText{CAJCS}
+\SetWatermarkText{\watermarktext}
 \SetWatermarkScale{0.3}
 \SetWatermarkLightness{0.95}
 \SetWatermarkAngle{45}
 
-%   ============================================================================
-%   GRAPHICS PATH
-%   ============================================================================
+% Logos: keep clogo / cajcs.JPG on this path, or put them in your TEXMF folder and delete the line.
 \graphicspath{{../../../../Images/}}
-%   ============================================================================
-%   HYPERREF (always last)
-%   ============================================================================
+
+% hyperref always last
 \usepackage{hyperref}
 \hypersetup{
     pdfauthor   = {Sagar Tamhankar},
-    pdftitle    = {ISC Mathematics Exam},
-    pdfsubject  = {Mathematics - Standard 12},
+    pdftitle    = {\examtitle},
+    pdfsubject  = {\examsubject -- Standard 12},
     colorlinks  = true,
     linkcolor   = primaryblue,
     urlcolor    = primaryblue,
     citecolor   = secondarygreen
 }
 
-%   ============================================================================
-%   DOCUMENT START
-%   ============================================================================
+% Prints the running total to the log (second run onwards)
+\AtEndDocument{\typeout{*** Total marks: \numpoints\space in \numquestions\space questions ***}}
+
+% ============================================================================
 \begin{document}
 
-% Header and Footer (exam class commands)
-\lhead{}
-\chead{}
-\rhead{}
-\lfoot{}
-\cfoot{Page \thepage\ of \numpages}
-\rfoot{}
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{Page \thepage\ of \numpages}\rfoot{}
 
-% School Header
-\noindent
+% School header
 \begin{center}
-	\includegraphics[scale=0.4]{clogo} \\
-	\includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
-	\large{\textbf{First Term Examination - September 2022}} \\
+  \includegraphics[scale=0.4]{clogo} \\
+  \includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
+  \large{\textbf{\examtitle}} \\
 \end{center}
 
-% Exam Details
 \noindent
-\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \\
-\textbf{Std: 12 ISC} \hfill \textbf{Time: 3 hrs} \\
-\textbf{Date: 05-09-2022}
+\textbf{Sub: \examsubject} \hfill \textbf{Mark: \exammarks} \\
+\textbf{Std: \examstd} \hfill \textbf{Time: \examtime} \\
+\textbf{Date: \examdate}
 
 \hrulefill
 
 \textbf{Instructions to Candidates}
 \begin{center}
-	You are allowed an additional 15 minutes for only reading the paper. \\
-	You must \textbf{NOT} start writing during reading time. \\
-	The question paper has \pageref{lastpage} printed pages. \\
-	 It consists of 20 questions and four sections: A, B, C and D. All questions are compulsory. \\
-Section A comprises very short answer questions of 1 mark each. \\
-Section B consists of short answer questions of 2 marks each. \\
-Section C consists of moderately long answer questions of 3 marks each. \\
-Section D consists of long answer questions of 5 marks each. \\
-Internal choices have been provided in three questions, each in Sections B, C and D. \\
-While attempting \textbf{Multiple Choice Questions in Section A}, you are required to write only ONE option as the answer. \\
-The intended marks for questions or parts of questions are given in the brackets []. \\
-All workings, including rough work, should be done on the same page as, and adjacent to, the rest of the answer. \\
-Mathematical tables and graph papers are provided. \\
+  You are allowed an additional 15 minutes for only reading the paper. \\
+  You must \textbf{NOT} start writing during reading time. \\
+  The question paper has \numpages\ printed pages. \\
+  It consists of \numquestions\ questions and four sections: A, B, C and D. All questions are compulsory. \\
+  Section A comprises very short answer questions of 1 mark each. \\
+  Section B consists of short answer questions of 2 marks each. \\
+  Section C consists of moderately long answer questions of 3 marks each. \\
+  Section D consists of long answer questions of 5 marks each. \\
+  Internal choices have been provided in three questions, each in Sections B, C and D. \\
+  While attempting \textbf{Multiple Choice Questions in Section A}, you are required to write only ONE option as the answer. \\
+  The intended marks for questions or parts of questions are given in the brackets []. \\
+  All workings, including rough work, should be done on the same page as, and adjacent to, the rest of the answer. \\
+  Mathematical tables and graph papers are provided.
 \end{center}
-\textbf{Instructions to Supervision Examiner}
+\textbf{Instructions to Supervision Examiner} \\
 Kindly read aloud the instructions given above to all the candidates present in the examination hall.
 
-
 \hrulefill
-\begin{center}
-	\textbf{SECTION A - 20 MARKS}
-\end{center}
-%======================== Questions Begin ============================
+
+% ============================================================================
+%  SECTION A - 20 MARKS
+% ============================================================================
+\begin{center}\textbf{SECTION A -- 20 MARKS}\end{center}
+
 \begin{questions}
-	\doublespacing
-	\pointsdroppedatright
-	\marksnotpoints
-	%\marginpointname{ \points}
-	\setlength{\rightpointsmargin}{2.1cm}
-	\pointformat{\bfseries\boldmath[\themarginpoints]}
-	% Question 1
-	\question[20] In subparts (i) to (xvii) choose the correct options and in subparts (xviii) to (xx), answer the
-questions as instructed. \droppoints
-	\begin{parts}
-		\renewcommand{\thepartno}{\roman{partno}}
-		%MCQ 1
-		\part
+  \doublespacing
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 2		
-		\part
+  % Question 1
+  \question[20] In subparts (i) to (xvii) choose the correct options and in subparts (xviii) to (xx), answer the
+  questions as instructed. \droppoints
+  \begin{parts}
+    \renewcommand{\thepartno}{\roman{partno}}
+    \mcq{}{}{}{}{}  % (i)
+    \mcq{}{}{}{}{}  % (ii)
+    \mcq{}{}{}{}{}  % (iii)
+    \mcq{}{}{}{}{}  % (iv)
+    \mcq{}{}{}{}{}  % (v)
+    \mcq{}{}{}{}{}  % (vi)
+    \mcq{}{}{}{}{}  % (vii)
+    \mcq{}{}{}{}{}  % (viii)
+    \mcq{}{}{}{}{}  % (ix)
+    \mcq{}{}{}{}{}  % (x)
+    \mcq{}{}{}{}{}  % (xi)
+    \mcq{}{}{}{}{}  % (xii)
+    \mcq{}{}{}{}{}  % (xiii)
+    \mcq{}{}{}{}{}  % (xiv)
+    \mcq{}{}{}{}{}  % (xv)
+    \mcq{}{}{}{}{}  % (xvi)
+    \mcq{}{}{}{}{}  % (xvii)
+    \part   %% (xviii)
+    \part   %% (xix)
+    \part   %% (xx)
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 3		
-		\part
+  % ==========================================================================
+  \begin{center}\textbf{SECTION B -- 14 MARKS}\end{center}
+  % Question 2
+  \question[2] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 4		
-		\part
+  % Question 3
+  \question[2] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 5	
-		\part
+  % Question 4
+  \question[2] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 6
-		\part
+  % Question 5  (internal choice)
+  \question[2]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 7		
-		\part
+  % Question 6  (internal choice)
+  \question[2]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 8		
-		\part
+  % Question 7  (internal choice)
+  \question[2]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 9		
-		\part
+  % Question 8
+  \question[2] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 10	
-		\part
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 11
-		\part
+  % ==========================================================================
+  \begin{center}\textbf{SECTION C -- 21 MARKS}\end{center}
+  % Question 9
+  \question[3] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 12		
-		\part
+  % Question 10
+  \question[3] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 13		
-		\part
+  % Question 11
+  \question[3] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 14		
-		\part
+  % Question 12
+  \question[3] \droppoints
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 15	
-		\part
+  % Question 13  (internal choice)
+  \question[3]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 16
-		\part
+  % Question 14  (internal choice)
+  \question[3]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		%MCQ 17		
-		\part
+  % Question 15  (internal choice)
+  \question[3]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{oneparchoices}
-			\choice
-			\choice
-			\choice
-			\choice
-		\end{oneparchoices}
-		
-		% 18
-		\part
-		% 19
-		\part
-		% 20
-		\part
-	\end{parts}
-\begin{center}
-	\textbf{SECTION B - 14 MARKS}
-\end{center}
-	% Question 2
-	\question[2] \droppoints
-	% Question 3
-	\question[2] \droppoints
-	% Question 4
-	\question[2] \droppoints
-	% Question 5
-	\question[2] 
-	\begin{parts}
-		\part    \droppoints
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 6
-	\question[2] 
-	\begin{parts}
-		\part    \droppoints
+  % ==========================================================================
+  \begin{center}\textbf{SECTION D -- 25 MARKS}\end{center}
+  % Question 16  (internal choice)
+  \question[5]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 7
-	\question[2] 
-	\begin{parts}
-		\part    \droppoints
+  % Question 17  (internal choice)
+  \question[5]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 8
-	\question[2]     \droppoints
+  % Question 18  (internal choice)
+  \question[5]
+  \begin{parts}
+    \part \droppoints
+    \begin{center}\textbf{OR}\end{center}
+    \part \droppoints
+  \end{parts}
 
-	\begin{center}
-	\textbf{SECTION C - 21 MARKS}
-\end{center}
-% Question 9
-	\question[3] \droppoints
-	% Question 10
-	\question[3] \droppoints
-	% Question 11
-	\question[3] \droppoints
-	% Question 12
-	\question[3] \droppoints
-	% Question 13
-	\question[3] 
-	\begin{parts}
-		\part    \droppoints
+  % Question 19
+  \question[5] \droppoints
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 14
-	\question[3] 
-	\begin{parts}
-		\part    \droppoints
+  % Question 20
+  \question[5] \droppoints
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 14
-	\question[3] 
-	\begin{parts}
-		\part    \droppoints
 
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 15
-	\question[3] 
-	\begin{parts}
-		\part    \droppoints
-
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-
-	\begin{center}
-	\textbf{SECTION D - 25 MARKS}
-\end{center}
-% Question 16
-	\question[5] 
-	\begin{parts}
-		\part    \droppoints
-
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 17
-	\question[5] 
-	\begin{parts}
-		\part    \droppoints
-
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 18
-	\question[5] 
-	\begin{parts}
-		\part    \droppoints
-
-		\begin{center}
-			\textbf{OR}
-		\end{center}
-		\part    \droppoints
-	\end{parts}
-	% Question 19
-	\question[5]  \droppoints
-	% Question 20
-	\question[5]  \droppoints
 \end{questions}
-\centering
-\vspace{2cm}
-********
-\label{lastpage}
+
+\begin{center}
+  \vspace{2cm}
+  ********
+\end{center}
+
 \end{document}
