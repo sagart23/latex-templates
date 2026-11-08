@@ -1,131 +1,98 @@
+% !TEX program = pdflatex
+% ============================================================================
+%  Class test -- Mathematics   (pdfLaTeX, or LuaLaTeX/XeLaTeX for Libertinus)
+%  Needs the sagar-* style files installed in your TEXMF tree.
+% ============================================================================
 \documentclass[a4paper,addpoints,12pt]{exam}
 
-%   ============================================================================
-%   COMMON STYLE PACKAGES (correct loading order)
-%   ============================================================================
-\usepackage{sagar-math}                    % Math, physics, siunitx, rupee
-\usepackage{sagar-graphics-tikz-core}      % TikZ, pgfplots, graphics
-\usepackage{sagar-boxes}                   % Color definitions, tcolorboxes
-\usepackage{sagar-exam-core}               % Exam geometry & formatting
+% ============================================================================
+%  EDIT THIS BLOCK FOR EACH TEST
+% ============================================================================
+\newcommand{\testtitle}{Class Test -- Topic}
+\newcommand{\testdate}{DD-MM-YYYY}
+\newcommand{\testsubject}{Mathematics}
+\newcommand{\teststd}{12 ISC}
+\newcommand{\testmarks}{80}
+\newcommand{\testtime}{3 hrs}
+\newcommand{\testheadright}{ISC Mathematics}
+\newcommand{\watermarktext}{CAJCS Senior Section}
+%\printanswers
 
-%   ============================================================================
-%   WATERMARK (after geometry is set)
-%   ============================================================================
+% ============================================================================
+%  STYLE PACKAGES (order matters)
+% ============================================================================
+\usepackage{sagar-math}
+\usepackage{sagar-graphics-tikz-core}
+\usepackage{sagar-boxes}
+\usepackage{sagar-exam-core}
+\usepackage{sagar-fonts}
+
 \usepackage[firstpageonly]{draftwatermark}
-\SetWatermarkText{CAJCS Senior Section}
+\SetWatermarkText{\watermarktext}
 \SetWatermarkScale{0.5}
 \SetWatermarkLightness{0.92}
 \SetWatermarkAngle{45}
 
-%   ============================================================================
-%   GRAPHICS PATH
-%   ============================================================================
 \graphicspath{{../../../../Images/}}
 
-%   ============================================================================
-%   GLOBAL SPACING (optional tweaks for tests)
-%   ============================================================================
+% Tweaks for tests
 \linespread{1.15}
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0pt}
 \flushbottom
 
-%   ============================================================================
-%   HYPERREF (always last)
-%   ============================================================================
+% hyperref always last (bookmarks are on by default: no need to ask)
 \usepackage{hyperref}
 \hypersetup{
     pdfauthor   = {Sagar Tamhankar},
-    pdftitle    = {Class Test - Mathematics},
-    pdfsubject  = {Mathematics},
+    pdftitle    = {\testtitle},
+    pdfsubject  = {\testsubject},
     pdfkeywords = {LaTeX, Mathematics, ISC},
     colorlinks  = true,
     linkcolor   = primaryblue,
     urlcolor    = primaryblue,
     citecolor   = primaryblue,
-    bookmarks   = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 2,
-    pdfstartview       = FitH,
-    linktoc            = all
+    pdfstartview = FitH
 }
 
-%   ============================================================================
-%   DOCUMENT START
-%   ============================================================================
+% ============================================================================
 \begin{document}
 
-% Header and Footer (exam class commands)
-\lhead{}
-\chead{}
-\rhead{ISC Mathematics}
-\lfoot{Mathematics Dept.}
-\cfoot{Page \thepage\ of \numpages}
-\rfoot{}
+\lhead{}\chead{}\rhead{\testheadright}
+\lfoot{Mathematics Dept.}\cfoot{Page \thepage\ of \numpages}\rfoot{}
 
-% Test Header
-\noindent
-\begin{center}
-   % \includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
-   % \large{\textbf{Test Topic}} \\
-\end{center}
+% Optional school logo / test topic
+%\begin{center}
+%  \includegraphics[width=0.6\textwidth]{cajcs.JPG} \\
+%  \large{\textbf{\testtitle}}
+%\end{center}
 
 \noindent
-\textbf{Sub: Mathematics} \hfill \textbf{Mark: 80} \\
-\textbf{Std: 12 ISC} \hfill \textbf{Time: 3 hrs} \\
-\textbf{Date: 05-09-2025} \\
+\textbf{Sub: \testsubject} \hfill \textbf{Mark: \testmarks} \\
+\textbf{Std: \teststd} \hfill \textbf{Time: \testtime} \\
+\textbf{Date: \testdate} \\
 \textbf{\textit{Reading time: 15 minutes}}
 
 \hrulefill
 
-%   ============================================================================
-%   QUESTIONS
-%   ============================================================================
 \begin{questions}
   \onehalfspacing
-  
-  % Question 1 - MCQ Section
+
+  % Question 1 -- MCQ section
   \question[15] In sub-parts (i) to (x) choose the correct option and in sub-parts (xi) to (xv) answer the questions as instructed. \droppoints
   \begin{parts}
     \renewcommand{\thepartno}{\roman{partno}}
-    
-    % MCQ 1
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 2
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-    % MCQ 3
-    \part 
-    \begin{oneparchoices}
-      \choice Option A
-      \choice Option B
-      \choice Option C
-      \choice Option D
-    \end{oneparchoices}
-    
-   
-    
-    % Short Answer 11-15
+    \mcq{}{Option A}{Option B}{Option C}{Option D}   % (i)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}   % (ii)
+    \mcq{}{Option A}{Option B}{Option C}{Option D}   % (iii)
+    % ... add more \mcq lines ...
+    \part Short answer question   % (xi)
     \part Short answer question
     \part Short answer question
     \part Short answer question
-    \part Short answer question
-    \part Short answer question
+    \part Short answer question   % (xv)
   \end{parts}
-  
+
   % Question 2
   \question
   \begin{parts}
@@ -133,7 +100,7 @@
     \part[4] \droppoints
     \part[4] \droppoints
   \end{parts}
-  
+
   % Question 3
   \question
   \begin{parts}
@@ -141,18 +108,18 @@
     \part[3] \droppoints
     \part[4] \droppoints
   \end{parts}
-  
+
   % Question 4
   \question
   \begin{parts}
     \part[4] \droppoints
     \part[6] \droppoints
   \end{parts}
-
 \end{questions}
 
-\centering
-\vspace{2cm}
-********
+\begin{center}
+  \vspace{2cm}
+  ********
+\end{center}
 
 \end{document}
